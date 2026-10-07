@@ -1,0 +1,19 @@
+[Unit]
+Description=Claude and Codex Bridge MCP (loopback)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=@BRIDGE_HOME@
+EnvironmentFile=-@CONFIG_FILE@
+ExecStart=@PYTHON@ -m claude_bridge
+Restart=on-failure
+RestartSec=10
+KillMode=mixed
+TimeoutStopSec=20
+NoNewPrivileges=true
+PrivateTmp=true
+UMask=0077
+
+[Install]
+WantedBy=default.target

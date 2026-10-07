@@ -1,0 +1,14 @@
+# Copy to the local config directory and edit values for this host.
+# Credentials belong in a protected local file, never in this template.
+BRIDGE_WORKSPACE_ROOT=/absolute/path/to/your/bridge-workspace
+BRIDGE_READ_ROOTS=/absolute/path/to/your/bridge-workspace
+BRIDGE_PROTECTED_WRITE_ROOTS=
+CLAUDE_EXECUTABLE=/absolute/path/to/claude
+CODEX_EXECUTABLE=/absolute/path/to/codex
+BRIDGE_LISTEN_HOST=127.0.0.1
+BRIDGE_LISTEN_PORT=5077
+BRIDGE_PROFILE=chatgpt
+AUTH_HEADER_FILE=
+BRIDGE_DATA_DIR=/absolute/path/to/private/bridge-state
+BRIDGE_CODEX_ENABLED=0
+BRIDGE_WRITER_ENABLED=0
