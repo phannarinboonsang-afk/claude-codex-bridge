@@ -1,29 +1,30 @@
 """Task-scoped read boundary. No model-controlled shell command is accepted."""
 from __future__ import annotations
 import os
-import re
 import stat
 import subprocess
 import tempfile
 from contextlib import contextmanager
 from pathlib import Path, PurePosixPath
-from .security import is_secret_name, sanitize
+from .security import sanitize
+from .protected_files import ProtectedFiles, protected_name
 
 EXCLUDED = {".git", ".codex", ".ssh", ".venv", "venv", "data", ".worktrees",
             "__pycache__", ".pytest_cache", "node_modules"}
-EXTRA_SECRET = re.compile(r"(?i)(private.?key|(^|[._-])auth([._-]|$)|keystore|secret|token|credential|password|passwd|api[._-]?key|(^|[._-])key([._-]|$)|\.env($|\.))")
+
 MAX_FILE = 65536
 MAX_FILES = 2000
 
 def denied(name: str) -> bool:
-    return name.lower() in EXCLUDED or is_secret_name(name) or bool(EXTRA_SECRET.search(name))
+    return name.lower() in EXCLUDED or protected_name(name)
 
 class ReadBroker:
-    def __init__(self, project: Path, scratch: Path, roots: tuple[Path, ...]):
+    def __init__(self, project: Path, scratch: Path, roots: tuple[Path, ...], protected_files: tuple[Path, ...] = ()):
+        self.protected = ProtectedFiles(protected_files)
         self.project = project.resolve(strict=True)
         self.scratch = scratch.resolve(strict=True)
         self.roots = tuple(p.resolve() for p in roots)
-        if any(is_secret_name(p) or p.lower() == ".codex" or EXTRA_SECRET.search(p) for p in self.project.parts):
+        if any(protected_name(p) for p in self.project.parts):
             raise PermissionError("secret project root denied")
         st = self.project.stat()
         self._identity = (st.st_dev, st.st_ino)
@@ -52,8 +53,20 @@ class ReadBroker:
             raise PermissionError("path denied by read policy")
         return parts
 
+    def _validate_opened_file(self, fd: int, expected: Path, st) -> None:
+        actual = Path(f"/proc/self/fd/{fd}").resolve(strict=True)
+        if actual != expected or not actual.is_relative_to(self.project):
+            raise PermissionError("opened file moved outside requested project path")
+        if any(denied(part) for part in actual.relative_to(self.project).parts):
+            raise PermissionError("opened file moved into protected location")
+        if self.protected.denies(actual, (st.st_dev, st.st_ino)):
+            raise PermissionError("configured protected file denied")
+
     def _bytes(self, raw: str) -> bytes:
         parts = self._parts(raw)
+        candidate = self.project.joinpath(*parts)
+        if self.protected.denies(candidate):
+            raise PermissionError("configured protected file denied")
         dfd = self._root_fd()
         try:
             for part in parts[:-1]:
@@ -62,9 +75,13 @@ class ReadBroker:
             fd = os.open(parts[-1], os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=dfd)
             try:
                 st = os.fstat(fd)
+                # Compare the opened inode/path before the first content read.
+                self._validate_opened_file(fd, candidate, st)
                 if not stat.S_ISREG(st.st_mode) or st.st_nlink != 1 or st.st_size > MAX_FILE:
                     raise PermissionError("not an eligible regular source file")
                 data = os.read(fd, MAX_FILE + 1)
+                # A rename during the read must not release bytes to the model.
+                self._validate_opened_file(fd, candidate, os.fstat(fd))
                 if len(data) > MAX_FILE or b"\x00" in data:
                     raise PermissionError("oversized or binary file")
                 return data
@@ -84,22 +101,32 @@ class ReadBroker:
             nonlocal seen, truncated
             if depth > 20:
                 truncated = True; return
-            for name in sorted(os.listdir(fd)):
-                seen += 1
-                if seen > 10000 or len(result) >= MAX_FILES:
-                    truncated = True; return
-                if denied(name): continue
-                rel = prefix + name
-                try:
-                    st = os.stat(name, dir_fd=fd, follow_symlinks=False)
-                    if stat.S_ISDIR(st.st_mode):
-                        child = os.open(name, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=fd)
-                        try: walk(child, rel + "/", depth + 1)
-                        finally: os.close(child)
-                    elif stat.S_ISREG(st.st_mode) and st.st_nlink == 1 and st.st_size <= MAX_FILE:
-                        result.append(rel)
-                except OSError:
-                    continue
+            expected = self.project / prefix.rstrip("/")
+            checkpoint = len(result)
+            try:
+                self._validate_opened_file(fd, expected, os.fstat(fd))
+                entries = sorted(os.listdir(fd))
+                self._validate_opened_file(fd, expected, os.fstat(fd))
+                for name in entries:
+                    seen += 1
+                    if seen > 10000 or len(result) >= MAX_FILES:
+                        self._validate_opened_file(fd, expected, os.fstat(fd))
+                        truncated = True; return
+                    if denied(name) or self.protected.denies(self.project / (prefix + name)): continue
+                    rel = prefix + name
+                    try:
+                        st = os.stat(name, dir_fd=fd, follow_symlinks=False)
+                        if stat.S_ISDIR(st.st_mode):
+                            child = os.open(name, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=fd)
+                            try: walk(child, rel + "/", depth + 1)
+                            finally: os.close(child)
+                        elif stat.S_ISREG(st.st_mode) and st.st_nlink == 1 and st.st_size <= MAX_FILE:
+                            result.append(rel)
+                    except OSError:
+                        continue
+                self._validate_opened_file(fd, expected, os.fstat(fd))
+            except OSError:
+                del result[checkpoint:]
         fd = self._root_fd()
         try: walk(fd, "", 0)
         finally: os.close(fd)

@@ -9,6 +9,8 @@ import os
 import re
 import signal
 import threading
+import tempfile
+import sys
 import time
 import uuid
 from dataclasses import dataclass
@@ -19,7 +21,7 @@ from .config import BASH_DENY, READ_DENY, Config
 from .project_state import git_porcelain
 from .security import PathError, sanitize, validate_project_path, validate_writer_roots
 from .store import TERMINAL, Store, utcnow
-from .executors import ClaudeRunner, CodexRunner
+from .executors import ClaudeRunner, CodexRunner, broker_arguments, BROKER_TOOLS
 
 log = logging.getLogger("claude_bridge")
 
@@ -79,7 +81,7 @@ class TaskRegistry:
             return sorted(self._running.values(), key=lambda r: r.started_mono)
 
 
-def build_command(cfg: Config, mode: str) -> list[str]:
+def build_command(cfg: Config, mode: str, broker_config: dict | None = None) -> list[str]:
     cmd = [cfg.claude_bin, "-p", "--output-format", "json", "--restricted",
            "--permission-mode", "dontAsk", "--permission-prompts", "none",
            "--no-session-persistence", "--strict-mcp-config",
@@ -92,9 +94,12 @@ def build_command(cfg: Config, mode: str) -> list[str]:
         allowed = list(READ_ONLY_TOOLS + WRITER_FILE_TOOLS) + [f"Bash({p})" for p in cfg.writer_bash_allow]
         denied = list(READ_DENY) + [f"Bash({p})" for p in BASH_DENY]
     else:
-        tools = list(READ_ONLY_TOOLS)
-        allowed = list(READ_ONLY_TOOLS)
-        denied = list(READ_DENY)
+        tools = []
+        allowed = ["mcp__bridge_read__" + name for name in BROKER_TOOLS if name != "git_state"]
+        denied = list(READ_DENY) + ["Read", "Grep", "Glob", "Bash", "Edit", "Write"]
+        cmd += ["--disable-slash-commands", "--setting-sources", ""]
+        if broker_config is not None:
+            cmd += ["--mcp-config", json.dumps(broker_config)]
     cmd += ["--tools", ",".join(tools), "--allowedTools", ",".join(allowed), "--disallowedTools", ",".join(denied)]
     return cmd
 
@@ -254,8 +259,21 @@ class Bridge:
         t0 = time.monotonic()
         before = await git_porcelain(project) if mode == "writer" else None
         try:
-            out = await run_process(build_command(self.cfg, mode), project, prompt.encode(), child_env(self.cfg), timeout_s,
-                                    on_start=lambda pid: self.store.set_proc(task_id, pid, proc_starttime(pid)))
+            if mode == "read_only":
+                # No user/project instruction discovery in the real source tree.
+                # Native reads are absent; every model read goes through this broker.
+                with tempfile.TemporaryDirectory(prefix="bridge-claude-") as tmp:
+                    scratch = Path(tmp).resolve()
+                    mcp_config = {"mcpServers": {"bridge_read": {
+                        "command": sys.executable,
+                        "args": ["-I", *broker_arguments(self.cfg, scratch, project), "--no-git"],
+                    }}}
+                    out = await run_process(build_command(self.cfg, mode, mcp_config), scratch,
+                                            prompt.encode(), child_env(self.cfg), timeout_s,
+                                            on_start=lambda pid: self.store.set_proc(task_id, pid, proc_starttime(pid)))
+            else:
+                out = await run_process(build_command(self.cfg, mode), project, prompt.encode(), child_env(self.cfg), timeout_s,
+                                        on_start=lambda pid: self.store.set_proc(task_id, pid, proc_starttime(pid)))
         except FileNotFoundError:
             r = self._result(task_id, "failed", mode, str(project), started, summary="Claude CLI not found",
                              warnings=["claude_not_found: configured claude binary does not exist"])

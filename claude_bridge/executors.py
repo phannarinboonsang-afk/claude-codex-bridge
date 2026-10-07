@@ -68,10 +68,16 @@ def select_codex_model(configured: str | None, bundled: dict, account: dict) -> 
     return min(visible, key=priority)["slug"]
 
 
-def codex_command(cfg, task_dir: Path, project: Path, model: str) -> list[str]:
+def broker_arguments(cfg, task_dir: Path, project: Path) -> list[str]:
     args = [str(Path(__file__).with_name("broker_server.py")), "--project", str(project),
             "--scratch", str(task_dir)]
     for root in cfg.read_roots: args += ["--root", str(root.resolve())]
+    if cfg.auth_token_file is not None:
+        args += ["--protected-file", str(cfg.auth_token_file.absolute())]
+    return args
+
+def codex_command(cfg, task_dir: Path, project: Path, model: str) -> list[str]:
+    args = broker_arguments(cfg, task_dir, project)
     mcp = {"bridge_read": {"command": sys.executable, "args": ["-I", *args],
                           "enabled_tools": list(BROKER_TOOLS), "default_tools_approval_mode": "auto", "required": True,
                           "startup_timeout_sec": 15, "tool_timeout_sec": 15}}

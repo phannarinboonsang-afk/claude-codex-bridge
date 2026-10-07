@@ -25,10 +25,11 @@ async def test_read_only_call_schema_and_argv(bridge, env):
     assert "hello" not in call["argv"]
     a = call["argv"]
     assert "-p" in a and "--restricted" in a and a[a.index("--permission-mode") + 1] == "dontAsk"
-    assert a[a.index("--tools") + 1] == "Read,Grep,Glob"   # no Bash/Edit/Write
+    assert a[a.index("--tools") + 1] == ""   # no native file bypass
     assert "Bash" not in a[a.index("--allowedTools") + 1]
     assert "Read(**/.env)" in a[a.index("--disallowedTools") + 1]
-    assert os.path.realpath(call["cwd"]) == os.path.realpath(env["root"])
+    assert os.path.realpath(call["cwd"]) != os.path.realpath(env["root"])
+    assert r["project"] == str(env["root"].resolve())
 
 
 async def test_default_project_and_defaults(bridge, env):
