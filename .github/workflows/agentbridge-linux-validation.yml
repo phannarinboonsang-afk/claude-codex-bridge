@@ -39,6 +39,17 @@ jobs:
           test -x /usr/bin/bwrap
           /usr/bin/bwrap --version
           python3 scripts/diagnose-git-sandbox.py --require
+      - name: Record sandbox policy failure evidence
+        if: failure()
+        run: |
+          dpkg-query -W bubblewrap
+          cat /proc/self/attr/current
+          sysctl kernel.apparmor_restrict_unprivileged_userns kernel.unprivileged_userns_clone
+          sudo aa-status || true
+          for profile in /etc/apparmor.d/bwrap /etc/apparmor.d/bubblewrap; do
+            if test -f "$profile"; then cat "$profile"; fi
+          done
+          sudo dmesg | tail -n 80
       - run: /usr/bin/python3 -m venv .ci-bridge && .ci-bridge/bin/pip install -r requirements.lock
       - run: .ci-bridge/bin/python -m pytest -q tests --ignore=tests/agent_chat --ignore=tests/orchestrator --ignore=tests/remote_worker
   coordinator:
