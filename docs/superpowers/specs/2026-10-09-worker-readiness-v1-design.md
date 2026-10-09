@@ -1,9 +1,10 @@
 # Worker Readiness V1 specification
 
-Status: READY_FOR_OWNER_REVIEW. Architecture approved; this written specification
-requires owner approval before an implementation plan is written. The plan also
-requires approval before implementation. Nothing described below is implemented
-by this document.
+Status: owner approved in principle, subject to the auth-pairing and network
+clarifications below passing public-safety, metadata, and CI validation. Once
+those gates pass this specification is APPROVED_READY_FOR_IMPLEMENTATION_PLAN.
+The implementation plan still requires owner approval before implementation.
+Nothing described below is implemented by this document.
 
 ## 1. Purpose, baseline, and scope
 
@@ -117,7 +118,7 @@ operator next steps, never copied into public evidence automatically.
 | Disk | At least 80 GiB free on the filesystem containing the planned data root; inspect its nearest existing ancestor before preparation. |
 | Permissions | Use metadata and access checks on selected staging parent and installed roots. Never create a test file. Symlink/reparse escape, unsafe owner, or ambiguous access is BLOCKED. |
 | Worker port | Loopback port 8765 default. Read socket tables and probe loopback only as needed; never reserve/bind a port during doctor. Fresh-host assessment treats a listener as conflict. With explicit installed-mode connection configuration, permit only an authenticated, schema-valid response from the installed Worker; unavailable authentication or ambiguous listener identity is BLOCKED. Port availability is a snapshot, not a reservation. |
-| Network | Bounded DNS and verified TLS connection to fixed approved Git/package/model authorities, no model request or authentication. Unchecked/offline is DEGRADED and cannot satisfy enable prerequisites. |
+| Network | Read operational interface/route capabilities without printing addresses. Optional bounded DNS/TLS observations report direct or explicitly configured approved-path reachability separately. Missing direct Internet access is not a host-readiness blocker. Offline observations are unverified, not failed runtime enforcement. |
 | Agents | Presence only in doctor. Missing optional CLI is DEGRADED, not a synthetic-host blocker. Authentication is UNKNOWN unless separately probed. |
 | Identity | Doctor run as root is BLOCKED: rerun as the owner. Privilege is confined to explicit enable/runtime-admin commands. |
 
@@ -132,18 +133,39 @@ Raw token bytes and task/transcript content are discarded. No model auth file is
 read. Add an in-memory/read-only inspection transport rather than instantiating
 the current journal-creating client during doctor.
 
-Default network checks send no credentials, honor no proxy environment values,
-reject private/link-local/loopback results for external authorities, validate
-TLS, and follow no redirects. Each check times out within five seconds; total
-doctor deadline is thirty seconds. `--offline` avoids network checks and reports
-them as unverified. Connectivity is not an egress-enforcement proof.
+Network capability inspection distinguishes the host network stack from traffic
+policy. `HOST_NETWORK_CAPABLE` is YES when read-only observations find operational
+loopback plus an up non-loopback interface and a configured route toward the
+owner's intended egress/tunnel path; NO when a required local capability is
+demonstrably absent; UNKNOWN when observations or intended-path configuration
+are insufficient. This is a capability observation, not an external reachability
+or runtime-containment claim. Its evidence never includes private addresses.
 
-`HOST_READY=YES` means all mandatory supported-host prerequisites pass and
-preparation may proceed. Optional agents may remain absent. It does not mean
-services are installed or writers can run. `WRITER_READY` is always NO during
-doctor and becomes YES only through separately verified runtime, network, agent,
+Optional direct connectivity observations send no credentials, honor no ambient
+proxy environment values, reject private/link-local/loopback results for external
+authorities, validate TLS, and follow no redirects. If an approved proxy is
+explicitly configured, label that path separately; do not bypass it to obtain
+a passing result. A failed direct observation reports `direct_path_unavailable`
+without implying the approved runtime path will fail. Each observation times out
+within five seconds; total doctor deadline is thirty seconds. `--offline`
+skips outbound DNS/TLS and API probes, still reads hardware/OS/systemd/cgroup and
+local network capability, and reports skipped connectivity as unverified.
+Connectivity is not an egress-enforcement proof.
+
+`HOST_READY=YES` means mandatory hardware, supported OS/architecture, local
+runtime/systemd/cgroup, identity, storage, filesystem, and port prerequisites
+pass, and preparation may proceed. It does not require unrestricted or direct
+Internet access. `--offline` may therefore return HOST_READY=YES with DEGRADED
+overall status because outbound observations are unverified. Optional agents
+may remain absent. HOST_NETWORK_CAPABLE and deployment-stage connectivity are
+reported separately; absent network capability requires remediation before a
+stage that needs it, without concealing passing hardware/local-host checks.
+HOST_READY does not mean services are installed or writers can run.
+`WRITER_READY` is always NO during doctor and becomes YES only through verified
+pairing, runtime containment, runtime network enforcement/reachability, agent,
 source-policy, and owner-approval gates. Existing enablement is never inferred
-from a prior doctor report; prerequisites are rechecked at activation time.
+from a prior doctor report; stage-specific prerequisites are rechecked at
+activation time.
 
 ## 5. Schemas and result model
 
@@ -157,17 +179,25 @@ from its digest.
 ### Doctor report
 
 Required fields: `schema_version`, `kind: "doctor"`, `status`, `host_ready`,
-`writer_ready: false`, `checks`, `missing_requirements`, `agents`, `next_steps`,
-`generated_at`. Each check has `id`, `required`, `status`, `code`, a bounded
+`writer_ready: false`, `host_network_capable` (YES/NO/UNKNOWN),
+`runtime_network_enforcement_proven: false`, `checks`, `missing_requirements`,
+`agents`, `next_steps`, `generated_at`. Each check has `id`, `required`, `status`, `code`, a bounded
 allowlisted `observed` object, and a plain remediation string. Status is
 PASS/DEGRADED/BLOCKED. An unobservable required capability is BLOCKED, never PASS.
 `host_ready` is a JSON boolean; human output renders HOST_READY=YES/NO.
+Network observation checks identify `path: direct|approved_proxy|local_capability`
+and `stage: host|enable|runtime`; runtime results cannot be inferred from host
+observations. Skipped outbound checks are optional for the HOST_READY decision.
 
 ### Owner bootstrap configuration
 
 Fields: `schema_version`, `worker_user`, `api` (fixed loopback host and validated
 port), `limits` (memory, swap, tasks, CPU percentage, timeout), and
-`approved_sources` (repository identity, approved HTTPS URL, approved commit).
+`approved_sources` (repository identity, approved HTTPS URL, approved commit),
+and optional `network` (approved egress-policy file reference and approved local
+proxy URL). Proxy URLs are limited to the installed loopback proxy with no URL
+credentials; arbitrary endpoint overrides are not accepted. No proxy auth or
+network-secret value is stored in these schemas.
 `worker_user` must be an explicit validated local account name, not a shipped
 username. Default sources are synthetic-only; `writers_enabled` must be false
 and `active_run_limit` must be 1. Bounds follow existing Worker policy.
@@ -179,7 +209,10 @@ value, private key, arbitrary command, or caller-supplied execution path is vali
 Fields: `schema_version`, `worker_url`, `worker_auth_secret_file`,
 `journal_file`, `tunnel` (SSH host alias, local port, remote loopback port,
 known-hosts-file reference, identity-file reference), and optional
-`inspection_run_id` for read-only installed-mode doctor. References are private
+`inspection_run_id` for read-only installed-mode doctor. Pairing validation
+additionally uses private state binding `pairing_id`, `secret_generation_id`,
+`installation_digest`, and `pairing_state`; this state is separate from the
+secret file and cannot itself authorize an API request. References are private
 local owner configuration; templates contain labelled placeholders only.
 `worker_url` must be `http://127.0.0.1:<port>` behind the owner-managed encrypted
 tunnel, matching RemoteWorkerClient's current restriction. Public/LAN direct
@@ -227,13 +260,21 @@ existing identities. Controller state/auth remain root-only. Installation owns
 only AgentBridge paths and uses explicit owner/modes. Unexpected existing files
 fail closed; idempotent matching installations may be reused. Generate a new
 worker-specific token locally with exclusive creation and mode 0600; print only
-its file reference. Never reuse production/provider/Bridge credentials.
+its file reference. Follow the pairing lifecycle in section 6.1; never reuse
+production/provider/Bridge/model/SSH credentials.
 
 Enable installs the root-owned narrow controller and dedicated egress services,
 reloads systemd, and starts only AgentBridge services. No API operation exposes
 root shell, arbitrary files, PIDs, or systemctl. Agents execute exclusively as
 the configured non-root identity. Writers remain disabled. Preserve the existing
 per-run systemd controls and filesystem sandbox; no unsandboxed fallback.
+ENABLE requires only stage-specific connectivity: local systemd/loopback and
+all prerequisite packages/verified runtime material already present. It does
+not fetch source, install packages, or demand direct model/Git/package access.
+An entirely offline installation can start a disabled synthetic baseline from
+a complete verified local bundle. Explicit pairing later requires the approved
+encrypted owner channel; runtime tasks later require their approved egress path.
+CHECK lists the missing requirements for each stage separately.
 Missing verified toolchain material or unproven sandbox launch is a blocking
 prerequisite, not permission to fetch random binaries or weaken policy.
 
@@ -242,6 +283,131 @@ failure records the primary stage and cleanup result separately and leaves
 writers disabled. A reviewed uninstall plan stops only AgentBridge units and
 removes only ledger-owned matching files; default rollback preserves artifacts
 and operator credentials, and never deletes unrelated accounts/data.
+
+### 6.1. Owner-mediated Worker auth pairing lifecycle
+
+Pairing is a local owner/admin lifecycle, not a new public service or Worker API
+operation. The seven existing operations and bearer contract remain unchanged.
+No ChatGPT tool or Agent is permitted to export, receive, rotate, or retrieve the
+Worker secret. Root-owned local pairing helpers have fixed source paths and
+validated pairing IDs; the transfer uses a separately authenticated owner/admin
+SSH channel, not the restricted API-forwarding identity.
+
+**Secret generation and service copy:** use Python `secrets.token_hex(32)` backed
+by the OS cryptographic random source, giving 256 random bits encoded as 64 ASCII
+hex characters plus newline. Generate distinct random pairing and generation IDs
+that do not derive from the secret. Store the service copy exclusively at
+`/etc/agentbridge-worker/api-token`, root:root, 0600, in a root-owned 0700
+configuration directory. Initial creation uses an opened validated directory
+descriptor, O_CREAT|O_EXCL|O_NOFOLLOW and 0600, validates regular-file ownership,
+writes/fsyncs the complete secret, and fsyncs the directory. The controller starts
+only after a complete creation and root-only metadata record. On interruption,
+never accept a partial secret; keep service/writers disabled and recover the
+recorded generation under owner approval. Repeated ENABLE does not overwrite
+a valid existing secret or declare an existing pairing complete.
+
+**Pairing state:** persist root-only Worker state and owner-only control-side
+state, each 0600 with atomic temp-file/fsync/rename updates in protected
+directories. States are UNPAIRED -> EXPORT_READY -> TRANSFER_PENDING ->
+LOCAL_INSTALLED -> VERIFIED -> PAIRED, with TRANSFER_UNKNOWN, EXPIRED, ROTATING,
+and REVOKED failure/lifecycle states. Bind pairing ID, secret generation ID,
+installation digest, creation/expiry times, intended owner UID, and confirmation
+state. State records contain no token or token-derived diagnostic output.
+Any non-PAIRED, contradictory, or ambiguous state sets WRITER_READY=NO.
+
+**One-time export:** only an explicit owner pairing request may produce an
+artifact. Require an existing non-root owner/admin account distinct from the
+agent and proxy accounts. Store a single active artifact for the generation in
+`/var/lib/agentbridge-worker-pairing/<pairing_id>/`: a 0600 `worker-auth` file
+containing the service secret and a 0600 metadata file without secret values.
+The separate fixed pairing parent is root-owned 0711; its random-ID child is owned by the
+selected owner UID, mode 0700. Artifact metadata and authoritative state remain
+separate; the authoritative ledger remains beneath the existing root-only 0700
+controller-state directory. All ancestors must permit the intended traversal;
+no controller-state permissions are widened for export. The artifact must never be
+under a repository/worktree, shared folder, or Agent-readable location. Create
+files exclusively through validated directory descriptors, reject symlinks and
+unsafe existing paths, and fsync before EXPORT_READY. Maximum lifetime is fifteen
+minutes and secret-file size is exactly 65 bytes. Print only pairing ID, state,
+expiry, and file references. Never print the secret or serialize it in stdout,
+stderr, logs, transcripts, command arguments, environment variables, Git, or CI.
+
+**Transfer and control-side installation:** the owner pins/verifies the Worker
+SSH host key and uses encrypted SSH/SFTP with normal certificate/host verification
+and an owner-admin identity. Transfer file bytes through SFTP protocol directly
+into an exclusively created 0600 temporary file in a validated owner-owned 0700
+control directory. Never use `cat`, terminal output, clipboard, shell substitution,
+debug payload logging, or a command-line token. SSH credentials are independent
+of the Worker token; no private SSH key is transferred. Both artifact paths and
+remote identity come from the private owner configuration, never a public IP or
+shipped username. V1 requires enforceable POSIX ownership/modes at both ends;
+an unverified permission model is BLOCKED, not silently accepted.
+
+Validate the complete received length/encoding, metadata generation/installation
+binding, freshness, owner, and mode before fsync and atomic installation as
+`worker_auth_secret_file`. Initial installation must not overwrite an unexpected
+existing destination. Rotation may replace only the previously ledger-bound
+secret file. Keep token bytes inside the transfer/installation process; progress
+and verification output contain fixed status codes only. Do not attach the file
+to task inputs, transcript storage, artifacts, or model credential directories.
+
+**Verify both ends and retire:** verify the Worker still serves the recorded
+generation and installation over the pinned owner channel, then use the installed
+control-side file through the encrypted loopback tunnel for authenticated
+create/inspect of a fixed synthetic, non-executed pairing registration. Never
+start an Agent for pairing. Validate the real API response/schema and generation
+record, then stop/cleanup only that registration and record VERIFIED. Delete
+the export secret/metadata and temporary transfer files, verify artifact absence,
+and retire the pairing ID. Only after those checks and an acknowledged
+owner-channel confirmation may both sides record PAIRED. Lost final confirmation
+leaves control-side state TRANSFER_UNKNOWN and global WRITER_READY=NO, even if
+the Worker recorded PAIRED; retry reconciles the same generation and must not
+recreate a retired export. Retain only redacted
+ledger metadata. File unlink is not a claim of physical SSD erasure; minimize
+copies and rely on permissions plus revocation for failed generations.
+
+**Interrupted or failed pairing:** record TRANSFER_UNKNOWN rather than success
+on any lost transfer/verification/confirmation acknowledgement. A partial local
+file never becomes the active secret reference. Before expiry, an explicit retry
+reconciles the same pairing ID and generation and can resume/retransfer the same
+artifact or verify a fully installed file; it must not invent a second successful
+pairing or start any task. No secret comparison is printed. If either ledger,
+remote generation, expiry, cleanup, or authenticated probe cannot be reconciled,
+remain unpaired and WRITER_READY=NO. Expiry/cancellation removes only ledger-owned
+artifacts/temp files and invalidates the generation before issuing a new export.
+An expired artifact must not leave a copied bearer indefinitely valid: disable
+the controller until the old token is revoked/replaced and a new generation is
+loaded. Service-start/precheck, every API authentication decision, and subsequent
+pairing operations enforce the generation's pending-pairing expiry. After the
+deadline the controller rejects all requests using that unpaired generation,
+including synthetic requests; wall-clock rollback cannot extend its lifetime
+within a boot, and reboot requires freshness revalidation before loading it.
+The controller's bounded maintenance cycle removes expired ledger-owned artifacts
+within sixty seconds; failure to remove them remains a cleanup error and prevents
+a new export. Failure to complete pairing never opens the writer gate. Normal
+task APIs do not perform pairing or distribute secrets.
+
+**Rotation:** explicit owner/admin operation, with writers disabled and no active
+Worker run; otherwise refuse until the owner separately stops/drains it. Stop
+only the dedicated controller, record ROTATING, generate a fresh secret through
+exclusive 0600 staging, fsync and atomically replace the fixed service file, and
+restart only that Worker controller with the new generation. There is no dual
+token overlap or fallback to the old secret. Re-pair through a fresh one-time
+artifact and atomically replace the ledger-bound control-side file. Interrupted
+rotation leaves WRITER_READY=NO and old-token use rejected once the new generation
+is loaded; if loading fails, the controller stays stopped. Successful pairing
+does not automatically re-enable writers or production integration.
+
+**Revocation and cleanup:** an explicit revoke request disables writers, stops
+only the dedicated controller, marks REVOKED, retires the service secret and
+ledger-bound export artifacts, and removes the control-side copy through the
+owner channel. Refuse to claim control-side cleanup success when disconnected.
+Revocation cannot be marked complete while registered executions remain active:
+require owner-approved stop/drain of exact Worker runs and report unresolved
+cleanup separately. Deleted/stale tokens must not authenticate after controller
+restart; a new generation and complete pairing are required. No unrelated key,
+account, credential, service, or filesystem is touched. Pairing is necessary
+but insufficient for WRITER_READY: all other approved acceptance gates remain.
 
 ## 7. Synthetic Worker API self-test
 
@@ -335,12 +501,50 @@ and configured credential flow; it is not proof of model entitlement or a live
 Agent task. Those remain later real-host acceptance gates.
 
 The API remains loopback-only, reached through a verified encrypted tunnel.
-An owner-specific worker token is separate from all model/control-plane keys.
-Retain dedicated proxy/egress policy: approved Git/package/model authorities,
-block direct private-network and metadata access by agent identity. DNS/TLS
-connectivity checks do not prove allowlisting. Network enforcement must be tested
-on the future host and is a separate mandatory writer-enable gate. Never add
-production mounts or credential copies to satisfy connectivity/authentication.
+An owner-specific worker token is separate from all model/control-plane/SSH keys
+and follows section 6.1 pairing. Retain dedicated proxy/egress policy: approved
+Git/package/model authorities, blocking direct private-network and metadata
+access by agent identity. Never add production mounts or credential copies to
+satisfy connectivity/authentication.
+
+### 9.1. Host capability versus runtime network acceptance
+
+HOST_NETWORK_CAPABLE is the section 4 host observation. It never implies
+RUNTIME_NETWORK_ENFORCEMENT_PROVEN. Direct Internet access is optional for doctor
+and not a universal ENABLE prerequisite. CHECK/PREPARE need no outbound traffic;
+ENABLE with complete local prerequisites needs only local loopback/systemd.
+Pairing needs its separately verified encrypted owner channel. No phase silently
+disables a proxy or firewall, broadens an allowlist, or adds direct access.
+
+After installation, approved synthetic network acceptance must run under the
+actual non-root agent identity and per-run sandbox using the configured proxy
+and enforced egress rules. Validate required approved Git, package, and model
+destinations through that path, with bounded protocol-level probes and TLS
+verification. No model request, account credential, or paid inference is needed
+for this transport check. A package/Git/model destination that only works through
+an unauthorized direct route fails the runtime gate, even if doctor saw it.
+If a destination requires authenticated protocol readiness beyond safe probes,
+record that extra check as UNKNOWN until the later approved agent/source test.
+
+Require independent privileged observation of the installed policy and matching
+deny/allow counters plus attempted workload connections. Demonstrate denial of
+direct egress bypass, unauthorized external destinations, metadata/link-local,
+private/LAN targets, and production-service destination classes, for applicable
+IPv4/IPv6 paths. Use controlled synthetic targets where needed; a timeout to an
+unreachable address alone is not enforcement evidence. Do not access production
+services to obtain proof. Demonstrate approved-proxy success from the same
+workload boundary; host-root/owner connectivity is insufficient. The proxy must
+retain exact authority allowlisting, DNS/private-address rejection, and no
+unapproved relay path.
+
+Report `runtime_network_enforcement_proven` and `runtime_reachability_proven`
+separately, with evidence classification and PASS/FAIL/UNKNOWN outcome per check.
+Only complete independent enforcement evidence sets
+RUNTIME_NETWORK_ENFORCEMENT_PROVEN=YES. WRITER_READY remains NO until that result,
+required destination reachability through the approved path, and all existing
+pairing/containment/agent/source/owner gates pass. Offline or preinstallation
+doctor results cannot promote either runtime network field. CI uses deterministic
+fixtures/contract tests; actual host proof remains pending.
 
 ## 10. Failure semantics and security invariants
 
@@ -391,9 +595,11 @@ is authorized.
 | Area | Required deterministic cases |
 | --- | --- |
 | Doctor | Ready Ubuntu host; insufficient total/available memory; CPU/disk deficit; missing Git/systemd; manager unavailable; v1/hybrid; missing controller; parent limits; root invocation; port conflict; permission/symlink denial; offline/DNS/TLS/timeout; unsupported architecture/OS. |
+| Host/runtime network distinction | Offline and unavailable direct Internet can preserve HOST_READY=YES; missing approved runtime path leaves WRITER_READY=NO; proxy-only host is valid; complete local ENABLE needs no Internet; stage-specific connectivity failures remain separate; host-root DNS/TLS cannot promote runtime proof; deny timeout without enforcement evidence is UNKNOWN; bypass/private/metadata denial and approved-path success require actual workload-boundary evidence. |
 | Schemas/redaction | Unknown/duplicate keys, invalid types/limits/URLs, secret fields, oversized input; hostile subprocess output cannot disclose a planted secret or private path. |
 | Agents | Each missing CLI; explicit unauthenticated/authenticated statuses; unsupported version, malformed output, timeout, credential-scope mismatch => UNKNOWN; no auth-file inspection or model calls. |
 | Bootstrap | CHECK has zero writes; PREPARE touches only new staging; dry-run/manifest determinism; repeat identical bundle; collision/symlink/hash mismatch; root/approval requirements; unexpected existing identity/file; partial failure and scoped rollback. |
+| Auth pairing | Exclusive generation and owner/mode enforcement; unsafe export account/path denied; partial transfer never installed; lost acknowledgement and retry reconcile same generation; expiry/wall-clock rollback/reboot cannot preserve stale token validity; failed API verification/cleanup leaves WRITER_READY=NO; successful encrypted pairing retires artifact; rotation rejects old token with no overlap; interrupted rotation fails closed; revocation with unreachable control copy reports incomplete cleanup; no secret appears in output/logs/arguments/Git/fixture reports. |
 | Self-test | Actual handler/policy/store/client HTTP contract; lifecycle operations; duplicate start; stale spec; auth/malformed rejection; disconnect/reconnect; completed-result retrieval; session-only cleanup; unresolved cleanup remains visible. |
 | Containment | Static-only never runtime; independently verified successful fixture; forged/missing/stale evidence rejected; normal exit with memory enforcement accepted; absent enforcement rejected; stop/timeout descendant leak; run isolation and cleanup; primary failure survives cleanup failure. |
 | Metadata | Safe author/committer; unsafe author or committer; environment override; internal-domain/local-machine identity; malformed email; range excludes only fixed checkpoint ancestry; new bad commit is rejected with redacted output. |
@@ -423,8 +629,10 @@ network enforcement, live-agent authentication, or autonomous E2E PASS.
 3. Supply private owner configuration, CHECK, and PREPARE the reviewed bundle.
 4. On a future approved dedicated Linux host, separately approve privileged
    installation/service activation. Writers remain disabled after ENABLE.
-5. Run installed API self-test and runtime containment/network acceptance,
-   then configure and verify agent authentication and approved source policy.
+5. Complete owner-mediated encrypted auth pairing and retire its one-time export.
+   Run installed API self-test and runtime containment/network acceptance through
+   the approved egress path, then configure and verify agent authentication and
+   approved source policy. No direct Internet requirement substitutes for this.
 6. Validate the encrypted connection with an isolated Orchestrator instance.
    Real-host and live autonomous acceptance remain separate future milestones.
 7. Final production configuration/deployment/restart requires a new specific
@@ -451,4 +659,6 @@ the acceptance criteria. Primary upstream references:
 Self-review: privilege stages are separate, all writer gates remain closed,
 static and runtime evidence are distinct, every required negative path is in
 the test matrix, and no public document contains private host identities or
-credential values. The next required action is owner review of this document.
+credential values. The two owner-required pairing/network clarifications must
+pass the documented public-safety/metadata checks and branch CI before the
+specification is ready for a separately reviewed implementation plan.
