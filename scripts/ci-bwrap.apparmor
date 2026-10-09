@@ -1,0 +1,33 @@
+# SPDX-License-Identifier: MIT
+# CI runner only. Allow trusted bwrap to construct namespaces, then stack a
+# capability-denying profile on every executable it launches. Never disable
+# Ubuntu's global unprivileged-userns restriction or grant host capabilities.
+# Policy rationale: https://discourse.ubuntu.com/t/understanding-apparmor-user-namespace-restriction/58007
+abi <abi/4.0>,
+include <tunables/global>
+profile agentbridge-ci-bwrap /usr/bin/bwrap flags=(attach_disconnected,mediate_deleted) {
+  capability,
+  file rwlkm /{**,},
+  network,
+  unix,
+  signal,
+  ptrace,
+  userns,
+  mount,
+  umount,
+  pivot_root,
+  pix /** -> &agentbridge-ci-bwrap//&agentbridge-ci-unprivileged,
+}
+profile agentbridge-ci-unprivileged flags=(attach_disconnected,mediate_deleted) {
+  file rwlkm /{**,},
+  network,
+  unix,
+  signal,
+  ptrace,
+  userns,
+  mount,
+  umount,
+  pivot_root,
+  pix /** -> &agentbridge-ci-unprivileged,
+  audit deny capability,
+}

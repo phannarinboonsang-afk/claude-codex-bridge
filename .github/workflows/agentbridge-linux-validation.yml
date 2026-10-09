@@ -33,6 +33,10 @@ jobs:
           if test -x /usr/bin/bwrap; then /usr/bin/bwrap --version; fi
           python3 scripts/diagnose-git-sandbox.py
       - run: sudo apt-get update && sudo apt-get install -y python3-venv bubblewrap
+      - name: Authorize trusted sandbox setup on the disposable runner
+        run: |
+          test "$(sysctl -n kernel.apparmor_restrict_unprivileged_userns)" = 1
+          sudo apparmor_parser --replace scripts/ci-bwrap.apparmor
       - name: Require isolated Git sandbox
         run: |
           command -v bwrap
