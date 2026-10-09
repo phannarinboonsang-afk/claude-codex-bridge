@@ -102,6 +102,23 @@ jobs:
           systemd-analyze --version | head -n 1
       - name: Install official Ubuntu validation tools
         run: bash ci/install-linux-tools.sh
+      - name: Use read-only schema validation with access to runner datasource cache
+        run: |
+          mkdir -p "$RUNNER_TEMP/schema-tools"
+          cat > "$RUNNER_TEMP/schema-tools/cloud-init" <<'EOF'
+          #!/usr/bin/env bash
+          set -euo pipefail
+          if [[ "$#" == 1 && "$1" == --version ]]; then
+            exec sudo /usr/bin/cloud-init --version
+          elif [[ "$#" == 3 && "$1" == schema && "$2" == --config-file && -f "$3" ]]; then
+            exec sudo /usr/bin/cloud-init schema --config-file "$3"
+          else
+            printf '%s\n' 'Only read-only cloud-init version/schema inspection is permitted' >&2
+            exit 1
+          fi
+          EOF
+          chmod 0700 "$RUNNER_TEMP/schema-tools/cloud-init"
+          printf '%s\n' "$RUNNER_TEMP/schema-tools" >> "$GITHUB_PATH"
       - name: Run offline, Linux static, and provisioning guard tests
         env:
           RUNNER_TEMP: ${{ runner.temp }}
