@@ -27,6 +27,11 @@ jobs:
           node-version: '22'
       - name: Install the pinned Bridge Codex security-test executable
         run: npm install --global --ignore-scripts --no-audit --no-fund @openai/codex@0.160.0
+      - name: Diagnose isolated Git sandbox prerequisites
+        run: |
+          command -v bwrap || true
+          if test -x /usr/bin/bwrap; then /usr/bin/bwrap --version; fi
+          python3 scripts/diagnose-git-sandbox.py
       - run: sudo apt-get update && sudo apt-get install -y python3-venv
       - run: /usr/bin/python3 -m venv .ci-bridge && .ci-bridge/bin/pip install -r requirements.lock
       - run: .ci-bridge/bin/python -m pytest -q tests --ignore=tests/agent_chat --ignore=tests/orchestrator --ignore=tests/remote_worker
