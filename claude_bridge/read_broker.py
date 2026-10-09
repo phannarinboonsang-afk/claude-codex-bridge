@@ -18,6 +18,13 @@ MAX_FILES = 2000
 def denied(name: str) -> bool:
     return name.lower() in EXCLUDED or protected_name(name)
 
+class SandboxUnavailable(PermissionError):
+    """Sanitized public error with a safe internal diagnostic classification."""
+    def __init__(self, diagnostic_code: str):
+        super().__init__("isolated git inspection unavailable")
+        self.diagnostic_code = diagnostic_code
+
+
 class ReadBroker:
     def __init__(self, project: Path, scratch: Path, roots: tuple[Path, ...], protected_files: tuple[Path, ...] = ()):
         self.protected = ProtectedFiles(protected_files)
@@ -206,8 +213,12 @@ class ReadBroker:
                    "GIT_OPTIONAL_LOCKS": "0", "GIT_TERMINAL_PROMPT": "0", "GIT_LITERAL_PATHSPECS": "1"}
             try:
                 p = subprocess.run(cmd, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=10, pass_fds=(gitfd,))
-            except (OSError, subprocess.TimeoutExpired):
-                raise PermissionError("isolated git inspection unavailable") from None
+            except subprocess.TimeoutExpired:
+                raise SandboxUnavailable("sandbox_timeout") from None
+            except FileNotFoundError:
+                raise SandboxUnavailable("sandbox_executable_missing") from None
+            except OSError:
+                raise SandboxUnavailable("sandbox_launch_denied") from None
             if p.returncode:
                 return {"status": "unavailable", "text": "", "warnings": ["isolated git command failed"]}
             output = sanitize(p.stdout, 20000)
