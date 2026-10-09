@@ -1,0 +1,12 @@
+{
+  "allowed_connect_hosts": [
+    "github.com", "api.github.com", "codeload.github.com", "objects.githubusercontent.com",
+    "registry.npmjs.org", "pypi.org", "files.pythonhosted.org",
+    "archive.ubuntu.com", "security.ubuntu.com",
+    "api.openai.com", "chatgpt.com", "auth.openai.com",
+    "api.anthropic.com", "claude.ai"
+  ],
+  "listen": "127.0.0.1",
+  "port": 3128,
+  "status": "CANDIDATE_ALLOWLIST_REQUIRES_REAL_CLIENT_TESTS"
+}

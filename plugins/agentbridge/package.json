@@ -1,0 +1,6 @@
+{
+  "name":"agentbridge-private-app","private":true,"version":"1.0.0",
+  "type":"module","scripts":{"build":"node build.mjs","test":"node --test test/*.test.mjs"},
+  "dependencies":{"@modelcontextprotocol/ext-apps":"1.2.2"},
+  "devDependencies":{"esbuild":"0.25.12","jsdom":"26.1.0"}
+}

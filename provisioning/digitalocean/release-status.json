@@ -1,0 +1,4 @@
+{
+  "verdict": "BLOCKED",
+  "reason": "Awaiting a passing ubuntu-24.04 GitHub Actions release-validation run and its package-fingerprint manifest"
+}

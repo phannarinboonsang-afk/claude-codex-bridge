@@ -1,0 +1,14 @@
+[Unit]
+Description=Reference only; actual services derive immutable validated run limits
+[Service]
+User=agentbridge
+Group=agentbridge
+ExecStart=/usr/bin/false
+MemoryMax=2G
+MemorySwapMax=0
+TasksMax=128
+CPUQuota=100%
+RuntimeMaxSec=600
+KillMode=control-group
+NoNewPrivileges=yes
+# NOT installed or started; unit_text() generates exact runtime units.

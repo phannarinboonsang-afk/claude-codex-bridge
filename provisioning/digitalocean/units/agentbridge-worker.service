@@ -1,0 +1,26 @@
+[Unit]
+Description=AgentBridge narrow loopback worker controller
+After=network.target
+Requires=agentbridge-egress-policy.service agentbridge-egress.service
+After=agentbridge-egress-policy.service agentbridge-egress.service
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/python3 /opt/agentbridge-worker/worker.py serve
+Restart=on-failure
+UMask=0077
+NoNewPrivileges=yes
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+MemoryMax=256M
+TasksMax=64
+CPUQuota=50%
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+StandardOutput=null
+StandardError=journal
+[Install]
+WantedBy=multi-user.target

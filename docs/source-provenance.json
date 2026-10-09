@@ -1,0 +1,911 @@
+[
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/__init__.py",
+    "TARGET_PATH": "backend/agent_chat/__init__.py",
+    "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "target_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/bridge_client.py",
+    "TARGET_PATH": "backend/agent_chat/bridge_client.py",
+    "source_sha256": "20ee5960339b71ddf000bcd71661d6e99d87eecec35547665aa01cf6f250dcc6",
+    "target_sha256": "20ee5960339b71ddf000bcd71661d6e99d87eecec35547665aa01cf6f250dcc6",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/config.example",
+    "TARGET_PATH": "backend/agent_chat/config.example",
+    "source_sha256": "b72dcf5761e0747d843dc337e0bad0a9475addf673108936a7037a6c764cc38b",
+    "target_sha256": "b72dcf5761e0747d843dc337e0bad0a9475addf673108936a7037a6c764cc38b",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/config.py",
+    "TARGET_PATH": "backend/agent_chat/config.py",
+    "source_sha256": "6d522f78c6e302f78a41a2eafe4f48eefffffbaa33046494aaa4a6dba04185dd",
+    "target_sha256": "6d522f78c6e302f78a41a2eafe4f48eefffffbaa33046494aaa4a6dba04185dd",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/provider_gateway.py",
+    "TARGET_PATH": "backend/agent_chat/provider_gateway.py",
+    "source_sha256": "3f222de462b7fa7a76423e8f5187e1c591f500d53800d7be1d6632f7afe95360",
+    "target_sha256": "3f222de462b7fa7a76423e8f5187e1c591f500d53800d7be1d6632f7afe95360",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/provider_worker.py",
+    "TARGET_PATH": "backend/agent_chat/provider_worker.py",
+    "source_sha256": "64123ae03a2b04cb12344e0264ae1a68a80799ba8bde680af5222827f20b05eb",
+    "target_sha256": "64123ae03a2b04cb12344e0264ae1a68a80799ba8bde680af5222827f20b05eb",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/providers/__init__.py",
+    "TARGET_PATH": "backend/agent_chat/providers/__init__.py",
+    "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "target_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/providers/anthropic.py",
+    "TARGET_PATH": "backend/agent_chat/providers/anthropic.py",
+    "source_sha256": "5f1238debe8ab0e742100f1daf84f2c6fca2559bd47a244b1ad7788e6e755a4d",
+    "target_sha256": "5f1238debe8ab0e742100f1daf84f2c6fca2559bd47a244b1ad7788e6e755a4d",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/providers/base.py",
+    "TARGET_PATH": "backend/agent_chat/providers/base.py",
+    "source_sha256": "5433f9280ec55b96ca14cb70c6db64bb59c7f2cd5083a6d5f66fa97058aee18e",
+    "target_sha256": "5433f9280ec55b96ca14cb70c6db64bb59c7f2cd5083a6d5f66fa97058aee18e",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/providers/credentials.py",
+    "TARGET_PATH": "backend/agent_chat/providers/credentials.py",
+    "source_sha256": "29a858c22af5cbc06dd0dbfdf9758d66a060b6f07735e68eb9810568fea25c56",
+    "target_sha256": "29a858c22af5cbc06dd0dbfdf9758d66a060b6f07735e68eb9810568fea25c56",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/providers/http.py",
+    "TARGET_PATH": "backend/agent_chat/providers/http.py",
+    "source_sha256": "9df595368928df348481700343827d547ca81680f7d0e564ac1bc3a0312f29dc",
+    "target_sha256": "9df595368928df348481700343827d547ca81680f7d0e564ac1bc3a0312f29dc",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/providers/openai.py",
+    "TARGET_PATH": "backend/agent_chat/providers/openai.py",
+    "source_sha256": "3bd717c2d35e18f5f7b221fddddc2e54e0f594bc5fb1ea3e607a177a711e8048",
+    "target_sha256": "3bd717c2d35e18f5f7b221fddddc2e54e0f594bc5fb1ea3e607a177a711e8048",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/routes.py",
+    "TARGET_PATH": "backend/agent_chat/routes.py",
+    "source_sha256": "99b5361eadb10fe239bae80b600abe6b31b7687c3425f951873dd3b8d6eb865b",
+    "target_sha256": "99b5361eadb10fe239bae80b600abe6b31b7687c3425f951873dd3b8d6eb865b",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/safety.py",
+    "TARGET_PATH": "backend/agent_chat/safety.py",
+    "source_sha256": "0033e66356598ac387006417677e3371ba4a63d657b777059cf054098677fe51",
+    "target_sha256": "0033e66356598ac387006417677e3371ba4a63d657b777059cf054098677fe51",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/service.py",
+    "TARGET_PATH": "backend/agent_chat/service.py",
+    "source_sha256": "7d481f60507df6e2607e66ed79dc24c66dfcba7979e3890fb1ba174198106f19",
+    "target_sha256": "7d481f60507df6e2607e66ed79dc24c66dfcba7979e3890fb1ba174198106f19",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/agent_chat/store.py",
+    "TARGET_PATH": "backend/agent_chat/store.py",
+    "source_sha256": "8d1384f9c623b06a54dd25dbcf340a23ebd94fa05b601cbea49185e907fdfdba",
+    "target_sha256": "4b7fedccab685d889bb78743f871420de62f2fd5f208d9f971db19b44c3b5166",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/__init__.py",
+    "TARGET_PATH": "backend/orchestrator/__init__.py",
+    "source_sha256": "d65362da787d63e0dd8d3c19842387859257f7ad11916889c2e4bb0a50bc2f67",
+    "target_sha256": "6aec93db9356477ce82c28458ed746a15963d2798a75c8c64e41fd8f3eb2e4e2",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/__main__.py",
+    "TARGET_PATH": "backend/orchestrator/__main__.py",
+    "source_sha256": "fd3b057965b76441d6fbdfc0932c49bbe2ba4627b2237e2af7ea455ea7d5adbb",
+    "target_sha256": "afbe960da01953cb1ca2aaab24135820ef1027425e24891745ba2d4370d69310",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/app.py",
+    "TARGET_PATH": "backend/orchestrator/app.py",
+    "source_sha256": "5168eeea428e1c77d20ee654936f25818bb86828837de395af19ce76f10c688a",
+    "target_sha256": "81cff5a83539be3f50b27734f57c3fc36375754d6dc8fa33ad6aff0ccd80ecd6",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/bridge.py",
+    "TARGET_PATH": "backend/orchestrator/bridge.py",
+    "source_sha256": "02cbda07a55f1dcc7593e7b6a9f86cdd4f2215c469b58e9ea5b6f93f5bb0e3e5",
+    "target_sha256": "f2ffa949c79e44fc83ad8dad78c3873591f770bafbd0f93c5dd7c7a14ffd136f",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/context.py",
+    "TARGET_PATH": "backend/orchestrator/context.py",
+    "source_sha256": "18e99aab48a7fa15661cba00dd327297e11a1e0cb434f96cbc01224e8f249bd4",
+    "target_sha256": "18e99aab48a7fa15661cba00dd327297e11a1e0cb434f96cbc01224e8f249bd4",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/controls.py",
+    "TARGET_PATH": "backend/orchestrator/controls.py",
+    "source_sha256": "8aeef867b2cf065983da46aacb705b9300c49fa3dd485b2557b2f132bce86262",
+    "target_sha256": "8aeef867b2cf065983da46aacb705b9300c49fa3dd485b2557b2f132bce86262",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/decisions.py",
+    "TARGET_PATH": "backend/orchestrator/decisions.py",
+    "source_sha256": "ad815a923ce45ecc45b164f620ef124b84140e964cf5fee73c3183f1c63085de",
+    "target_sha256": "ad815a923ce45ecc45b164f620ef124b84140e964cf5fee73c3183f1c63085de",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/mcp_server.py",
+    "TARGET_PATH": "backend/orchestrator/mcp_server.py",
+    "source_sha256": "9dcc3113d8bae5305e24a6da914ca24b9ea57c958c4713f8621eee69973c8f80",
+    "target_sha256": "9dcc3113d8bae5305e24a6da914ca24b9ea57c958c4713f8621eee69973c8f80",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/protected.py",
+    "TARGET_PATH": "backend/orchestrator/protected.py",
+    "source_sha256": "18155fdae0c6cdc218e62e6e601af349a3cc7fa1b9be0625681510368a0755e1",
+    "target_sha256": "074b1e381bd8252034a308df19d894079210c2348e7b1ddac828b933111ff14e",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/recovery.py",
+    "TARGET_PATH": "backend/orchestrator/recovery.py",
+    "source_sha256": "112b200262332cdde20fc61dc48c9a71e3d90f574c0b0d6c698563088c3c048b",
+    "target_sha256": "112b200262332cdde20fc61dc48c9a71e3d90f574c0b0d6c698563088c3c048b",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/runtime.py",
+    "TARGET_PATH": "backend/orchestrator/runtime.py",
+    "source_sha256": "e4e38c85bc72034908e1aa2da8035d396c1148ab69b54e1d9c9ed8813965a00e",
+    "target_sha256": "e4e38c85bc72034908e1aa2da8035d396c1148ab69b54e1d9c9ed8813965a00e",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/store.py",
+    "TARGET_PATH": "backend/orchestrator/store.py",
+    "source_sha256": "3e01d2c1f60d3c00e1acc9b89a14af14bdc05133cf3b063ed398678e98dac0d0",
+    "target_sha256": "3e01d2c1f60d3c00e1acc9b89a14af14bdc05133cf3b063ed398678e98dac0d0",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/transport_auth.py",
+    "TARGET_PATH": "backend/orchestrator/transport_auth.py",
+    "source_sha256": "8f571cc6b38c25211803ff935222db949bdf5ef09f1c32d5c06359c1b62b7fc0",
+    "target_sha256": "8f571cc6b38c25211803ff935222db949bdf5ef09f1c32d5c06359c1b62b7fc0",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/types.py",
+    "TARGET_PATH": "backend/orchestrator/types.py",
+    "source_sha256": "f09ab8453f1921169a6a539e685ca1185b93a45d22f1da01f970c80a51ee0cfc",
+    "target_sha256": "f09ab8453f1921169a6a539e685ca1185b93a45d22f1da01f970c80a51ee0cfc",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "backend/orchestrator/worker.py",
+    "TARGET_PATH": "backend/orchestrator/worker.py",
+    "source_sha256": "85e1443741eb2e01131b01606ab467b440f3d836e3e42476bed625515bba3507",
+    "target_sha256": "267607652e5fe905225f8df81b89a0f1e5b158a177a16b6edebb5b148d46d9c1",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "plugins/agentbridge/.gitignore",
+    "TARGET_PATH": "plugins/agentbridge/.gitignore",
+    "source_sha256": "58aea3d6b4b0f8799c1e00c3b023898516997f6369ee8e13d8d4b4215f70a62b",
+    "target_sha256": "58aea3d6b4b0f8799c1e00c3b023898516997f6369ee8e13d8d4b4215f70a62b",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "plugins/agentbridge/README.md",
+    "TARGET_PATH": "plugins/agentbridge/README.md",
+    "source_sha256": "e8f053084f5809258301fc40f757ee8182961b364eb4f8295c1ad1d4f885d520",
+    "target_sha256": "e8f053084f5809258301fc40f757ee8182961b364eb4f8295c1ad1d4f885d520",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "plugins/agentbridge/build.mjs",
+    "TARGET_PATH": "plugins/agentbridge/build.mjs",
+    "source_sha256": "8dc9a0df00a7278055a38e69062ec03f23846bd659632dfda7311434970fcef8",
+    "target_sha256": "8dc9a0df00a7278055a38e69062ec03f23846bd659632dfda7311434970fcef8",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "plugins/agentbridge/package-lock.json",
+    "TARGET_PATH": "plugins/agentbridge/package-lock.json",
+    "source_sha256": "3d462d36e02e089ad7aff9717cacd6e718ef1a53691c4f44c740bb8cfe9a99b8",
+    "target_sha256": "3d462d36e02e089ad7aff9717cacd6e718ef1a53691c4f44c740bb8cfe9a99b8",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "plugins/agentbridge/package.json",
+    "TARGET_PATH": "plugins/agentbridge/package.json",
+    "source_sha256": "5f159b189195c633789dbc0d0a042e27bf8aa08ba03adcf16efa4b13ebe70c2f",
+    "target_sha256": "5f159b189195c633789dbc0d0a042e27bf8aa08ba03adcf16efa4b13ebe70c2f",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "plugins/agentbridge/src/control.mjs",
+    "TARGET_PATH": "plugins/agentbridge/src/control.mjs",
+    "source_sha256": "3d0bfb6ce356081e3105eea4ad0a40200b5988b0c6ab6f8f0496886bebd52d16",
+    "target_sha256": "3d0bfb6ce356081e3105eea4ad0a40200b5988b0c6ab6f8f0496886bebd52d16",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "plugins/agentbridge/src/view.mjs",
+    "TARGET_PATH": "plugins/agentbridge/src/view.mjs",
+    "source_sha256": "2a1d7c3ed1b3b18c3a85bc184cc5a072f0f49020ed20ff1814b6b532968bd313",
+    "target_sha256": "2a1d7c3ed1b3b18c3a85bc184cc5a072f0f49020ed20ff1814b6b532968bd313",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "plugins/agentbridge/test/run-view.test.mjs",
+    "TARGET_PATH": "plugins/agentbridge/test/run-view.test.mjs",
+    "source_sha256": "259596af66ab4ce08dc2586b949e9579de401a856343c7edf96c6f4490bd0acc",
+    "target_sha256": "259596af66ab4ce08dc2586b949e9579de401a856343c7edf96c6f4490bd0acc",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/agent_chat/test_bridge_client.py",
+    "TARGET_PATH": "tests/agent_chat/test_bridge_client.py",
+    "source_sha256": "f00c524916d83c4f959905f1186dc5d3587313f250b72b407c63a6c24cc99570",
+    "target_sha256": "f00c524916d83c4f959905f1186dc5d3587313f250b72b407c63a6c24cc99570",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/agent_chat/test_config.py",
+    "TARGET_PATH": "tests/agent_chat/test_config.py",
+    "source_sha256": "3d3b106442fda4fbf77c15779198f1c2fc535f913180e40368d15480bb369e4f",
+    "target_sha256": "3d3b106442fda4fbf77c15779198f1c2fc535f913180e40368d15480bb369e4f",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/agent_chat/test_gateway.py",
+    "TARGET_PATH": "tests/agent_chat/test_gateway.py",
+    "source_sha256": "68142f1333d69e6bca1d89824878e2f397f78cd13f857f0d013f35ddab92480c",
+    "target_sha256": "68142f1333d69e6bca1d89824878e2f397f78cd13f857f0d013f35ddab92480c",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/agent_chat/test_providers.py",
+    "TARGET_PATH": "tests/agent_chat/test_providers.py",
+    "source_sha256": "9128d1f63aeb16dba552dca0b71d5e986eb450eae2fcd0937a023b44e4ff3221",
+    "target_sha256": "9128d1f63aeb16dba552dca0b71d5e986eb450eae2fcd0937a023b44e4ff3221",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/agent_chat/test_review_regressions.py",
+    "TARGET_PATH": "tests/agent_chat/test_review_regressions.py",
+    "source_sha256": "6a5b2ec1ae78b8aeca0a4ad537660fd90d680145c57466c0f1e990c13780e7b1",
+    "target_sha256": "6a5b2ec1ae78b8aeca0a4ad537660fd90d680145c57466c0f1e990c13780e7b1",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/agent_chat/test_routes.py",
+    "TARGET_PATH": "tests/agent_chat/test_routes.py",
+    "source_sha256": "82bf7cfbf8c3be8705816730de08c3c80b425651590840468bf756a1bfa7e130",
+    "target_sha256": "82bf7cfbf8c3be8705816730de08c3c80b425651590840468bf756a1bfa7e130",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/agent_chat/test_security_boundaries.py",
+    "TARGET_PATH": "tests/agent_chat/test_security_boundaries.py",
+    "source_sha256": "c7f5765d79c705e03c3219d1f2c177fc723f3509f369509c8f09a8412ea616f7",
+    "target_sha256": "c7f5765d79c705e03c3219d1f2c177fc723f3509f369509c8f09a8412ea616f7",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/agent_chat/test_service.py",
+    "TARGET_PATH": "tests/agent_chat/test_service.py",
+    "source_sha256": "4f227c33088eff72b731971a955dd3fbf867218dabb8679760154dd894989e61",
+    "target_sha256": "4f227c33088eff72b731971a955dd3fbf867218dabb8679760154dd894989e61",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/agent_chat/test_store.py",
+    "TARGET_PATH": "tests/agent_chat/test_store.py",
+    "source_sha256": "bc809092a63765d60f8d7e20b8847f553f208677cc1ec5d9896969e722f0b10d",
+    "target_sha256": "c2276050cbbca929b71e1d202cf270988e954d675d2280bf947e0be6a6436a41",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/orchestrator/__init__.py",
+    "TARGET_PATH": "tests/orchestrator/__init__.py",
+    "source_sha256": "8d054c4e383e8c32970ae16501280ea8169cc8729f237bcb428d3e0cb3c53e03",
+    "target_sha256": "8d054c4e383e8c32970ae16501280ea8169cc8729f237bcb428d3e0cb3c53e03",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/orchestrator/test_controls.py",
+    "TARGET_PATH": "tests/orchestrator/test_controls.py",
+    "source_sha256": "1c0c5e905ad0a353a655c4f6ea0d09768e89f56c13da18aa316013d8034ff456",
+    "target_sha256": "1c0c5e905ad0a353a655c4f6ea0d09768e89f56c13da18aa316013d8034ff456",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/orchestrator/test_decisions.py",
+    "TARGET_PATH": "tests/orchestrator/test_decisions.py",
+    "source_sha256": "354ffb2d0f10a3a1e3732219a984adac24af88f8af7a447aba4371f5c5af9360",
+    "target_sha256": "354ffb2d0f10a3a1e3732219a984adac24af88f8af7a447aba4371f5c5af9360",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/orchestrator/test_final_hardening.py",
+    "TARGET_PATH": "tests/orchestrator/test_final_hardening.py",
+    "source_sha256": "b77a88bbe851ba5106e4a7b2988654ee4458f5f4f35f323b60bb47c1778768d6",
+    "target_sha256": "b77a88bbe851ba5106e4a7b2988654ee4458f5f4f35f323b60bb47c1778768d6",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/orchestrator/test_gates.py",
+    "TARGET_PATH": "tests/orchestrator/test_gates.py",
+    "source_sha256": "72fc03fe8fc353c3a9c16b70a30c4baa5517261585924ea20efb0f396f2cdc01",
+    "target_sha256": "24bfee488b329b0006c384be6e3e0d3df8956f32c8f8f55f99b5a69284d36b0d",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/orchestrator/test_loop.py",
+    "TARGET_PATH": "tests/orchestrator/test_loop.py",
+    "source_sha256": "9e99c6dd453ddcd3025338e8c4ff6f6c6fa8aee0d04dae7fb5d0773c784b5255",
+    "target_sha256": "9e99c6dd453ddcd3025338e8c4ff6f6c6fa8aee0d04dae7fb5d0773c784b5255",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/orchestrator/test_mcp.py",
+    "TARGET_PATH": "tests/orchestrator/test_mcp.py",
+    "source_sha256": "4c91dcf30b2f3f87d74d141121c581f4b50efcb435d9db18b7a3ce32d03259be",
+    "target_sha256": "4c91dcf30b2f3f87d74d141121c581f4b50efcb435d9db18b7a3ce32d03259be",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/orchestrator/test_recovery.py",
+    "TARGET_PATH": "tests/orchestrator/test_recovery.py",
+    "source_sha256": "0f9dd4b2c419c2f5e6f08259c3cd680fc6824fc9bf35096d0378b113d50cf8f8",
+    "target_sha256": "0f9dd4b2c419c2f5e6f08259c3cd680fc6824fc9bf35096d0378b113d50cf8f8",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/orchestrator/test_routes.py",
+    "TARGET_PATH": "tests/orchestrator/test_routes.py",
+    "source_sha256": "947979615fbe42e87767ccefef728feafd76929529f1bb4ab18f700b3fa93a57",
+    "target_sha256": "947979615fbe42e87767ccefef728feafd76929529f1bb4ab18f700b3fa93a57",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "tests/orchestrator/test_store.py",
+    "TARGET_PATH": "tests/orchestrator/test_store.py",
+    "source_sha256": "d01a23eacfb7f0516f84ca73cfcd6a4db45d20887f8abb5f42ce980f1efd4726",
+    "target_sha256": "d01a23eacfb7f0516f84ca73cfcd6a4db45d20887f8abb5f42ce980f1efd4726",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "requirements-orchestrator.lock",
+    "TARGET_PATH": "requirements-orchestrator.lock",
+    "source_sha256": "6cb1fb7b3b5e3ef81dd033ec449f7dbcf8301b5e698cf02bde6082e1e85b01cb",
+    "target_sha256": "6cb1fb7b3b5e3ef81dd033ec449f7dbcf8301b5e698cf02bde6082e1e85b01cb",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/src/app/components/agent-chat/agent-chat-workspace.component.spec.ts",
+    "TARGET_PATH": "agent_chat/ui/src/app/components/agent-chat/agent-chat-workspace.component.spec.ts",
+    "source_sha256": "1c3a26e4c90ac4af2c205be9dbc5386d661e8706eb56e6eccddde90c21973512",
+    "target_sha256": "1c3a26e4c90ac4af2c205be9dbc5386d661e8706eb56e6eccddde90c21973512",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/src/app/components/agent-chat/agent-chat-workspace.component.ts",
+    "TARGET_PATH": "agent_chat/ui/src/app/components/agent-chat/agent-chat-workspace.component.ts",
+    "source_sha256": "fa67e8c5fa84f0a71e4ffe62775151e984f599d381e358edf7edc9f723110c66",
+    "target_sha256": "35916e9a4cda95531071d5f9b5d8a9aae7d9e23812495095cf289c2a647b28a7",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/src/app/models/agent-chat.model.ts",
+    "TARGET_PATH": "agent_chat/ui/src/app/models/agent-chat.model.ts",
+    "source_sha256": "4e27a773c1d51020fc4d55aaf60d0eeba17ea489d52e5ad91876cfbedb0de1af",
+    "target_sha256": "4e27a773c1d51020fc4d55aaf60d0eeba17ea489d52e5ad91876cfbedb0de1af",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/src/app/services/agent-chat-api.service.ts",
+    "TARGET_PATH": "agent_chat/ui/src/app/services/agent-chat-api.service.ts",
+    "source_sha256": "30fb94b8b63af63eff479b6dd5cc7cfc28c8cd669251a2df24310f50bb5a5006",
+    "target_sha256": "30fb94b8b63af63eff479b6dd5cc7cfc28c8cd669251a2df24310f50bb5a5006",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/src/app/services/agent-chat.service.spec.ts",
+    "TARGET_PATH": "agent_chat/ui/src/app/services/agent-chat.service.spec.ts",
+    "source_sha256": "8eab8bfbfb6be11ef5852714ac04d77ebcf5d976f3fd8edfa0cafb63ea0c52f1",
+    "target_sha256": "8eab8bfbfb6be11ef5852714ac04d77ebcf5d976f3fd8edfa0cafb63ea0c52f1",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/src/app/services/agent-chat.service.ts",
+    "TARGET_PATH": "agent_chat/ui/src/app/services/agent-chat.service.ts",
+    "source_sha256": "d102c52cd18f6ad15eb9f9eae02eff081168dc60a0312463e69fa3911096ace3",
+    "target_sha256": "d102c52cd18f6ad15eb9f9eae02eff081168dc60a0312463e69fa3911096ace3",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/package.json",
+    "TARGET_PATH": "agent_chat/ui/package.json",
+    "source_sha256": "2782c6e3c8882b8d2921beb0547b65fa1c1894e6767047603836d22d26497c90",
+    "target_sha256": "2782c6e3c8882b8d2921beb0547b65fa1c1894e6767047603836d22d26497c90",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/package-lock.json",
+    "TARGET_PATH": "agent_chat/ui/package-lock.json",
+    "source_sha256": "b337434de0af347a12a0d4b851d71610488339cdd71b1a8a5bd607e5990582af",
+    "target_sha256": "b337434de0af347a12a0d4b851d71610488339cdd71b1a8a5bd607e5990582af",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/angular.json",
+    "TARGET_PATH": "agent_chat/ui/angular.json",
+    "source_sha256": "07e520652ab61034f3106ee22cda3c74ec3907e3787f820ebc5d257eca1b1011",
+    "target_sha256": "07e520652ab61034f3106ee22cda3c74ec3907e3787f820ebc5d257eca1b1011",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/tsconfig.json",
+    "TARGET_PATH": "agent_chat/ui/tsconfig.json",
+    "source_sha256": "3c3b6c2138f0a910f5284e1d64e9fc213af2b91409fdeaf5598ff495c28f79c2",
+    "target_sha256": "3c3b6c2138f0a910f5284e1d64e9fc213af2b91409fdeaf5598ff495c28f79c2",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/tsconfig.app.json",
+    "TARGET_PATH": "agent_chat/ui/tsconfig.app.json",
+    "source_sha256": "12e2786b56cc873a4e91f822894cc541082d16b90c0d7280aa5512469627d23f",
+    "target_sha256": "12e2786b56cc873a4e91f822894cc541082d16b90c0d7280aa5512469627d23f",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/tsconfig.spec.json",
+    "TARGET_PATH": "agent_chat/ui/tsconfig.spec.json",
+    "source_sha256": "958fd251a505c5d54d94d2694b8fde3d1c71aa244b522e3e053db1ac5b987dd0",
+    "target_sha256": "958fd251a505c5d54d94d2694b8fde3d1c71aa244b522e3e053db1ac5b987dd0",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+    "SOURCE_PATH": "frontend-angular/src/app/services/theme.service.ts",
+    "TARGET_PATH": "agent_chat/ui/src/app/services/theme.service.ts",
+    "source_sha256": "c6442855a7364f74b66b90f8c482dd1f691a3321aa6342d23f83ec38cba29d04",
+    "target_sha256": "e39cd78c31fdd59a45c9d2a09adf48d8cd3af1682b401537d36a3077d046a6ba",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": ".github/workflows/linux-release-validation.yml",
+    "TARGET_PATH": "provisioning/digitalocean/.github/workflows/linux-release-validation.yml",
+    "source_sha256": "735660846ff70c24be45487b30506e1d6503702593bf61b403e4303e4364eeb7",
+    "target_sha256": "f4706345e10ce011da6445b04cb5102f35c5e6b08dd2a6e4724824296fff9e94",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "acceptance.py",
+    "TARGET_PATH": "provisioning/digitalocean/acceptance.py",
+    "source_sha256": "9ad7fa74df2b38433344533f8e42b3752915ed3fb78b4a980f6112012de7aa74",
+    "target_sha256": "9ad7fa74df2b38433344533f8e42b3752915ed3fb78b4a980f6112012de7aa74",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "ci/install-linux-tools.sh",
+    "TARGET_PATH": "provisioning/digitalocean/ci/install-linux-tools.sh",
+    "source_sha256": "6d96fd2bb59a8e53ce30d6c4c50589e9833daa850e47b1d4588b40d8a4cd611c",
+    "target_sha256": "6d96fd2bb59a8e53ce30d6c4c50589e9833daa850e47b1d4588b40d8a4cd611c",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "ci/run-linux-validation.sh",
+    "TARGET_PATH": "provisioning/digitalocean/ci/run-linux-validation.sh",
+    "source_sha256": "69bc8ec65068ada0ab3c0aeb54fce0eed4f4235a07eac75f38d25254f2f77923",
+    "target_sha256": "69bc8ec65068ada0ab3c0aeb54fce0eed4f4235a07eac75f38d25254f2f77923",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "config/egress.nft",
+    "TARGET_PATH": "provisioning/digitalocean/config/egress.nft",
+    "source_sha256": "dbdb91bebceb8a08b2f819ab6035d9c68b6dfd6298d4ff63a94815b2c247ccda",
+    "target_sha256": "dbdb91bebceb8a08b2f819ab6035d9c68b6dfd6298d4ff63a94815b2c247ccda",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "config/egress-policy.json",
+    "TARGET_PATH": "provisioning/digitalocean/config/egress-policy.json",
+    "source_sha256": "3315bdc3df5cbb04f3e7d892ee549e54c1f56286dd663a4820877ec9daacbc8d",
+    "target_sha256": "3315bdc3df5cbb04f3e7d892ee549e54c1f56286dd663a4820877ec9daacbc8d",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "config/owner.schema.json",
+    "TARGET_PATH": "provisioning/digitalocean/config/owner.schema.json",
+    "source_sha256": "579e06caae14162545b2ba87f9a049cde9ae4add6126e9b1df97320867c89686",
+    "target_sha256": "579e06caae14162545b2ba87f9a049cde9ae4add6126e9b1df97320867c89686",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "config/policy.json",
+    "TARGET_PATH": "provisioning/digitalocean/config/policy.json",
+    "source_sha256": "a1edd17044b45c3082838de3a80712cfdb81befcfbf1acab64cc6332af8883cd",
+    "target_sha256": "8f94d4749172611ae705c0bb71fa0e8634803781e9fc5734da52c45388e383d1",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "config/run-spec.schema.json",
+    "TARGET_PATH": "provisioning/digitalocean/config/run-spec.schema.json",
+    "source_sha256": "914af2d02164fe6cf0953a7f275e1a6e41a1800b42f05a4ad533e9ae1ed702cb",
+    "target_sha256": "ce0be34d2ba5c5c0949c0c48f71b271e04a2a6bdaad4983db17139c25abbf059",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "config/toolchain.json",
+    "TARGET_PATH": "provisioning/digitalocean/config/toolchain.json",
+    "source_sha256": "e4f262fa1f73dab3ba1e037be68ecf25da7e617b4e5aae486df230685b2ac56a",
+    "target_sha256": "e4f262fa1f73dab3ba1e037be68ecf25da7e617b4e5aae486df230685b2ac56a",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "create-worker.py",
+    "TARGET_PATH": "provisioning/digitalocean/create-worker.py",
+    "source_sha256": "4356ce7a928e44ba5b81cfc16ac8cdafb92e5bcf6faa55cf550b59fd36524715",
+    "target_sha256": "4356ce7a928e44ba5b81cfc16ac8cdafb92e5bcf6faa55cf550b59fd36524715",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "destroy-worker.py",
+    "TARGET_PATH": "provisioning/digitalocean/destroy-worker.py",
+    "source_sha256": "a5a8d319f1475abb23807192e7ac1f4b71a89385b8887428eaf6c6c796364e38",
+    "target_sha256": "a5a8d319f1475abb23807192e7ac1f4b71a89385b8887428eaf6c6c796364e38",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "export-evidence.py",
+    "TARGET_PATH": "provisioning/digitalocean/export-evidence.py",
+    "source_sha256": "7fa2108cd3d8c4721ec5ea1b5268816a657a7e0f2db7bde9cb530961573bfe1d",
+    "target_sha256": "7fa2108cd3d8c4721ec5ea1b5268816a657a7e0f2db7bde9cb530961573bfe1d",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "guest/bootstrap.py",
+    "TARGET_PATH": "provisioning/digitalocean/guest/bootstrap.py",
+    "source_sha256": "c2a31e1c13db8edb8deab71e28ea1c15424cb0751bded6a281151ef9360b377f",
+    "target_sha256": "c2a31e1c13db8edb8deab71e28ea1c15424cb0751bded6a281151ef9360b377f",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "guest/configure-tunnel.py",
+    "TARGET_PATH": "provisioning/digitalocean/guest/configure-tunnel.py",
+    "source_sha256": "417af45f96b628f3f5fcda0887c19bd1c1100ebe7c7f86072da026bd3cb5c86d",
+    "target_sha256": "417af45f96b628f3f5fcda0887c19bd1c1100ebe7c7f86072da026bd3cb5c86d",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "guest/egress_policy.py",
+    "TARGET_PATH": "provisioning/digitalocean/guest/egress_policy.py",
+    "source_sha256": "376daabf06cb90e485cbc9a746eff61025bab9a14afb4bb3e88e8be16d6277ba",
+    "target_sha256": "376daabf06cb90e485cbc9a746eff61025bab9a14afb4bb3e88e8be16d6277ba",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "guest/toolchain.py",
+    "TARGET_PATH": "provisioning/digitalocean/guest/toolchain.py",
+    "source_sha256": "c07935f23408397090b46eacb3abbdaefc4db5f0bfb7cd484918e26b7a955112",
+    "target_sha256": "c07935f23408397090b46eacb3abbdaefc4db5f0bfb7cd484918e26b7a955112",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "linux-static-check.py",
+    "TARGET_PATH": "provisioning/digitalocean/linux-static-check.py",
+    "source_sha256": "5ae4fcedc8b8c07a7c70dc8592fcb9ebba435390d1220d014e05247cfaa3f236",
+    "target_sha256": "5ae4fcedc8b8c07a7c70dc8592fcb9ebba435390d1220d014e05247cfaa3f236",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "offline-check.py",
+    "TARGET_PATH": "provisioning/digitalocean/offline-check.py",
+    "source_sha256": "4db40a17b382d1c7bf4caf909a5c3c5ffdf2e1965ee1b27ed23783d612d01775",
+    "target_sha256": "4db40a17b382d1c7bf4caf909a5c3c5ffdf2e1965ee1b27ed23783d612d01775",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "provision.py",
+    "TARGET_PATH": "provisioning/digitalocean/provision.py",
+    "source_sha256": "de6fba5f21be2edab5fd484c00422080d6a75473a8c2231b8406ed2af89abc17",
+    "target_sha256": "2fbe6720b65b4619ff12e4f014b9b5fd9b5fb7b08518d89511f7f6f44708ae43",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "proxy.py",
+    "TARGET_PATH": "provisioning/digitalocean/proxy.py",
+    "source_sha256": "e4a1777b4ca3f857dcba5778c265d920c78f81532b26d4cf582fbd7f8f467569",
+    "target_sha256": "e4a1777b4ca3f857dcba5778c265d920c78f81532b26d4cf582fbd7f8f467569",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "README.md",
+    "TARGET_PATH": "provisioning/digitalocean/README.md",
+    "source_sha256": "8a54538da76d528ed6e824403bb0507017692cb4106006b4a4059f75f921e4e4",
+    "target_sha256": "a1e1fab0a8ddfa644ebcd2679a7a945487b009a96d666fbc95e7122c3c7b490e",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "release-manifest.py",
+    "TARGET_PATH": "provisioning/digitalocean/release-manifest.py",
+    "source_sha256": "6077d289c9581adca59cee961474d08fae4ec7749b2002ba17688a5d4b9d37c3",
+    "target_sha256": "4a7506e607b8fa86884baba8aee5181f083fdb4f61ca504fdb79ca6a453665c2",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "release-status.json",
+    "TARGET_PATH": "provisioning/digitalocean/release-status.json",
+    "source_sha256": "12db72dd52b2f539a5d71b1ddbc0160d4bb3feb95ed180e1f8881cb317d446d7",
+    "target_sha256": "12db72dd52b2f539a5d71b1ddbc0160d4bb3feb95ed180e1f8881cb317d446d7",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "runner.py",
+    "TARGET_PATH": "provisioning/digitalocean/runner.py",
+    "source_sha256": "c6484d15cea7970ba0fdb460059ddce00a0b12311c3499afab3242fd580640e0",
+    "target_sha256": "802787a4845422fbb59f46d9200d8ce44eae78f7206b358ce7ba48b69656d429",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "secret-scan.py",
+    "TARGET_PATH": "provisioning/digitalocean/secret-scan.py",
+    "source_sha256": "9ae0691e8c88e5bdced5aa911c0ffa1654cfd2d389de6bb695bc6e8168985529",
+    "target_sha256": "31e691022e3e84f9326570c2940787af571e6a3a6ceb735e5abcf204c505f098",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "SECURITY.md",
+    "TARGET_PATH": "provisioning/digitalocean/SECURITY.md",
+    "source_sha256": "fdf733785834296a228c39e61254cd9784326290fc75340987b5858a1e23531b",
+    "target_sha256": "2b3fe4d80b82b36e4657f299e77b2515a29b5df78553e30774adee360edbb93b",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "tests/test_create_guards.py",
+    "TARGET_PATH": "provisioning/digitalocean/tests/test_create_guards.py",
+    "source_sha256": "5143906cceb2419558c6b8ef9beca3fa6e63ef3fd575d53d33d0c28018ec772b",
+    "target_sha256": "f7c67b77270cb588cfcdf2d3be9a6ef788e349c638524087ee0c853a983dbeca",
+    "modified": true
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "tests/test_http.py",
+    "TARGET_PATH": "provisioning/digitalocean/tests/test_http.py",
+    "source_sha256": "12789dcdf722d96675f213e91c8ae9a4d07881be75f9c6a0e37c6f3c3ee7c390",
+    "target_sha256": "12789dcdf722d96675f213e91c8ae9a4d07881be75f9c6a0e37c6f3c3ee7c390",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "tests/test_regressions.py",
+    "TARGET_PATH": "provisioning/digitalocean/tests/test_regressions.py",
+    "source_sha256": "cb3011d70143e430757efa633e7d97c7ab5d3e18f434854bc568bd43e3d0ed53",
+    "target_sha256": "cb3011d70143e430757efa633e7d97c7ab5d3e18f434854bc568bd43e3d0ed53",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "tests/test_security.py",
+    "TARGET_PATH": "provisioning/digitalocean/tests/test_security.py",
+    "source_sha256": "8d27fcb66e576240a2863293b974040fddc913c5ba0afbc613410438dd843a2d",
+    "target_sha256": "8d27fcb66e576240a2863293b974040fddc913c5ba0afbc613410438dd843a2d",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "tests/test_static.py",
+    "TARGET_PATH": "provisioning/digitalocean/tests/test_static.py",
+    "source_sha256": "50ca50638e37a1ba3bf4dbd2772e5e1bb88262849ebd68018d9bde2f777c6931",
+    "target_sha256": "50ca50638e37a1ba3bf4dbd2772e5e1bb88262849ebd68018d9bde2f777c6931",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "units/agentbridge-egress.service",
+    "TARGET_PATH": "provisioning/digitalocean/units/agentbridge-egress.service",
+    "source_sha256": "d86711c59449c2a6ca984d3eef4ad6b556cfc445e85372c5ec3a03dda62417dd",
+    "target_sha256": "d86711c59449c2a6ca984d3eef4ad6b556cfc445e85372c5ec3a03dda62417dd",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "units/agentbridge-egress-policy.service",
+    "TARGET_PATH": "provisioning/digitalocean/units/agentbridge-egress-policy.service",
+    "source_sha256": "a572260645b7621cb6084b83d9e1e5ce325c09b2bf450cc506419dd44ae66faa",
+    "target_sha256": "a572260645b7621cb6084b83d9e1e5ce325c09b2bf450cc506419dd44ae66faa",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "units/agentbridge-run@.service.example",
+    "TARGET_PATH": "provisioning/digitalocean/units/agentbridge-run@.service.example",
+    "source_sha256": "5efe0e2b65010ab8c6299e10b9167feb51707bb985e3da5bf00e5ff5bb63e383",
+    "target_sha256": "5efe0e2b65010ab8c6299e10b9167feb51707bb985e3da5bf00e5ff5bb63e383",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "units/agentbridge-worker.service",
+    "TARGET_PATH": "provisioning/digitalocean/units/agentbridge-worker.service",
+    "source_sha256": "b75531b9d4ed77dc01fb329ae1c9d501fe5fbb2aebf39078316c82b6e93e93fc",
+    "target_sha256": "b75531b9d4ed77dc01fb329ae1c9d501fe5fbb2aebf39078316c82b6e93e93fc",
+    "modified": false
+  },
+  {
+    "SOURCE_COMMIT": null,
+    "SOURCE_PACKAGE_FINGERPRINT": "582f4d05eb4ac7c36fc67df2894ab3a8e277e7c9fe0011b717a69d182f5af581",
+    "SOURCE_PATH": "worker.py",
+    "TARGET_PATH": "provisioning/digitalocean/worker.py",
+    "source_sha256": "6fb680ebc8574ef375b5d935a4d1c062d631491d65a35d72073eef31a8db22e8",
+    "target_sha256": "9ffc3b6f0e6de34fd2db815093e97b69a4bcdef122ae47134e1f2ce2cf0d2a28",
+    "modified": true
+  }
+]

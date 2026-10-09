@@ -1,0 +1,92 @@
+name: Linux package release validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: provisioning/digitalocean
+
+jobs:
+  bridge:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+      - name: Install the pinned Bridge Codex security-test executable
+        run: npm install --global --ignore-scripts --no-audit --no-fund @openai/codex@0.160.0
+      - run: sudo apt-get update && sudo apt-get install -y python3-venv
+      - run: /usr/bin/python3 -m venv .ci-bridge && .ci-bridge/bin/pip install -r requirements.lock
+      - run: .ci-bridge/bin/python -m pytest -q tests --ignore=tests/agent_chat --ignore=tests/orchestrator --ignore=tests/remote_worker
+  coordinator:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - run: sudo apt-get update && sudo apt-get install -y python3-venv
+      - run: /usr/bin/python3 -m venv .ci-coordinator && .ci-coordinator/bin/pip install -r requirements-orchestrator.lock
+      - run: python3 scripts/public_safety_check.py
+      - run: .ci-coordinator/bin/python -m pytest -q tests/orchestrator tests/agent_chat tests/remote_worker
+  interfaces:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund && npm test && npm run build
+        working-directory: plugins/agentbridge
+      - run: npm ci --ignore-scripts --no-audit --no-fund && npm test -- --watch=false && npm run build
+        working-directory: agent_chat/ui
+  validate:
+    name: Static Ubuntu 24.04 validation
+    runs-on: ubuntu-24.04
+    needs: [bridge, coordinator, interfaces]
+    timeout-minutes: 25
+    steps:
+      - name: Check out package
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Record runner identity
+        run: |
+          test "$(. /etc/os-release && printf '%s' "$VERSION_ID")" = "24.04"
+          printf 'Runner: %s\n' "$(. /etc/os-release && printf '%s %s' "$NAME" "$VERSION_ID")"
+          systemd-analyze --version | head -n 1
+      - name: Install official Ubuntu validation tools
+        run: bash ci/install-linux-tools.sh
+      - name: Run offline, Linux static, and provisioning guard tests
+        env:
+          RUNNER_TEMP: ${{ runner.temp }}
+          AGENTBRIDGE_TEST_RESULTS: ${{ runner.temp }}/agentbridge-offline-tests.json
+          AGENTBRIDGE_VALIDATION_RESULTS: ${{ runner.temp }}/agentbridge-linux-validation-results.json
+        run: bash ci/run-linux-validation.sh
+      - name: Upload release validation manifest
+        if: success()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: agentbridge-digitalocean-writer-v1.0.2-linux-release-validation
+          path: ${{ runner.temp }}/release-validation-manifest.json
+          if-no-files-found: error
+          retention-days: 30

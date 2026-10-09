@@ -1,0 +1,17 @@
+* -text
+.gitattributes text eol=lf
+.github/** text eol=lf
+scripts/*.sh text eol=lf
+backend/** text eol=lf
+agent_chat/** text eol=lf
+plugins/** text eol=lf
+worker/** text eol=lf
+provisioning/** text eol=lf
+docs/agentbridge-* text eol=lf
+docs/source-provenance.json text eol=lf
+docs/third-party-notices.md text eol=lf
+docs/dependency-isolation.json text eol=lf
+docs/staging-review.json text eol=lf
+tests/agent_chat/** text eol=lf
+tests/orchestrator/** text eol=lf
+requirements-orchestrator.lock text eol=lf

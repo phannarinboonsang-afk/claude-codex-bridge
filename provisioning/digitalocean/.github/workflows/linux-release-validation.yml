@@ -1,0 +1,41 @@
+name: Linux package release validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Static Ubuntu 24.04 validation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Check out package
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Record runner identity
+        run: |
+          test "$(. /etc/os-release && printf '%s' "$VERSION_ID")" = "24.04"
+          printf 'Runner: %s\n' "$(. /etc/os-release && printf '%s %s' "$NAME" "$VERSION_ID")"
+          systemd-analyze --version | head -n 1
+      - name: Install official Ubuntu validation tools
+        run: bash ci/install-linux-tools.sh
+      - name: Run offline, Linux static, and provisioning guard tests
+        env:
+          RUNNER_TEMP: ${{ runner.temp }}
+          AGENTBRIDGE_TEST_RESULTS: ${{ runner.temp }}/agentbridge-offline-tests.json
+          AGENTBRIDGE_VALIDATION_RESULTS: ${{ runner.temp }}/agentbridge-linux-validation-results.json
+        run: bash ci/run-linux-validation.sh
+      - name: Upload release validation manifest
+        if: success()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: agentbridge-digitalocean-writer-v1.0.2-linux-release-validation
+          path: ${{ runner.temp }}/release-validation-manifest.json
+          if-no-files-found: error
+          retention-days: 30

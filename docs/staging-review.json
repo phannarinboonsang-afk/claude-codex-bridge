@@ -1,0 +1,65 @@
+{
+  "public_base": "dcd427baddfc20ffe1e165ca4e90048563190dcb",
+  "authoritative_commit": "6fb185e6a6e44a3ea54aa6a95f56211d54ce390f",
+  "sanitizations": [
+    {
+      "path": "backend/agent_chat/store.py",
+      "occurrences": 1,
+      "reason": "remove historical host/product coupling"
+    },
+    {
+      "path": "backend/orchestrator/app.py",
+      "occurrences": 1,
+      "reason": "remove historical host/product coupling"
+    },
+    {
+      "path": "backend/orchestrator/__init__.py",
+      "occurrences": 1,
+      "reason": "remove historical host/product coupling"
+    },
+    {
+      "path": "backend/orchestrator/__main__.py",
+      "occurrences": 1,
+      "reason": "remove historical host/product coupling"
+    },
+    {
+      "path": "backend/orchestrator/__main__.py",
+      "occurrences": 1,
+      "reason": "remove historical host/product coupling"
+    },
+    {
+      "path": "backend/orchestrator/protected.py",
+      "occurrences": 1,
+      "reason": "remove historical host/product coupling"
+    },
+    {
+      "path": "tests/orchestrator/test_gates.py",
+      "occurrences": 2,
+      "reason": "remove historical host/product coupling"
+    },
+    {
+      "path": "agent_chat/ui/src/app/components/agent-chat/agent-chat-workspace.component.ts",
+      "occurrences": 1,
+      "reason": "remove historical host/product coupling"
+    },
+    {
+      "path": "agent_chat/ui/src/app/services/theme.service.ts",
+      "occurrences": 1,
+      "reason": "remove historical host/product coupling"
+    },
+    {
+      "path": "agent_chat/ui/src/app/services/theme.service.ts",
+      "occurrences": 1,
+      "reason": "remove historical host/product coupling"
+    }
+  ],
+  "excluded": [
+    "historical containment/evidence",
+    "entire unrelated repository tree",
+    "old export",
+    "runtime credentials/state",
+    "unreviewed scoped local writer implementation"
+  ],
+  "license_gate": "PASS: owner-directed contribution to existing MIT project; no vendored third-party code",
+  "remote_adapter": "IMPLEMENTED: authenticated narrow HTTP adapter with durable start intent and immutable predecessor handoff; runtime acceptance remains disabled"
+}

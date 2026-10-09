@@ -1,0 +1,6 @@
+{
+  "version": "1.0.2-staged",
+  "writers_enabled": false,
+  "repositories": {"synthetic": "synthetic:none"},
+  "active_run_limit": 1
+}

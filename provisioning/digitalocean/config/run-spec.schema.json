@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AgentBridge immutable run request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "repository",
+    "base_commit",
+    "agent",
+    "profile",
+    "task",
+    "limits"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$",
+      "minLength": 32,
+      "maxLength": 32
+    },
+    "repository": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "base_commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$",
+      "minLength": 40,
+      "maxLength": 40
+    },
+    "agent": {
+      "enum": [
+        "synthetic",
+        "codex",
+        "claude"
+      ]
+    },
+    "profile": {
+      "enum": [
+        "tree",
+        "memory",
+        "pids",
+        "cpu",
+        "timeout",
+        "codex-task",
+        "claude-task"
+      ]
+    },
+    "task": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16384
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "memory_mb",
+        "tasks",
+        "cpu_percent",
+        "timeout"
+      ],
+      "properties": {
+        "memory_mb": {
+          "type": "integer",
+          "minimum": 64,
+          "maximum": 4096
+        },
+        "tasks": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 256
+        },
+        "cpu_percent": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 200
+        },
+        "timeout": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 3600
+        }
+      }
+    },
+    "previous_run_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$",
+      "minLength": 32,
+      "maxLength": 32
+    }
+  }
+}

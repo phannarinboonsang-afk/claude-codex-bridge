@@ -1,0 +1,7 @@
+table inet agentbridge_egress {
+  chain output {
+    type filter hook output priority 0; policy accept;
+    meta skuid "agentbridge" ip daddr 127.0.0.1 tcp dport 3128 accept
+    meta skuid "agentbridge" counter reject
+  }
+}

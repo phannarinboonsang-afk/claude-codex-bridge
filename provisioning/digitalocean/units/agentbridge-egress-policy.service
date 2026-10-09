@@ -1,0 +1,12 @@
+[Unit]
+Description=AgentBridge agent UID egress policy
+Before=agentbridge-worker.service agentbridge-egress.service
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/bin/python3 /opt/agentbridge-worker/egress_policy.py
+RemainAfterExit=yes
+NoNewPrivileges=yes
+CapabilityBoundingSet=CAP_NET_ADMIN
+[Install]
+WantedBy=multi-user.target

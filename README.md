@@ -12,3 +12,7 @@ Local Streamable HTTP MCP service for read-only Claude Code and Codex CLI tasks.
 6. Review config/unit, then start with systemctl --user enable --now claude-chatgpt-bridge.service, then run scripts/verify.sh for authenticated localhost MCP health.
 
 AUTH_HEADER_FILE is only a path to an operator-created protected file. Installer never creates, reads, or copies credential contents. See docs and SECURITY.md. Default profile is chatgpt; generic executor selection uses agents. Writer/Codex are disabled by default.
+
+## Autonomous AgentBridge integration branch
+
+See [the architecture notes](docs/agentbridge-architecture.md) for the independent transcript, coordinator, owner controls, MCP App and external Worker package. Existing Bridge behavior and read-only defaults remain unchanged. Autonomous writers are opt-in and disabled until dedicated-worker containment, egress and readiness acceptance passes. The remote adapter is covered by synthetic HTTP lifecycle and multi-round tests. Provisioning requires an exact matching Ubuntu 24.04 release-validation manifest. Runtime containment and live Agent acceptance remain separate gates.

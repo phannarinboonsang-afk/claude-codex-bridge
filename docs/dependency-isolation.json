@@ -1,0 +1,692 @@
+[
+  {
+    "file": "backend/agent_chat/bridge_client.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/bridge_client.py",
+    "module": "os",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/bridge_client.py",
+    "module": "urllib.parse",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/bridge_client.py",
+    "module": "requests",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/bridge_client.py",
+    "module": ".providers.credentials",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/bridge_client.py",
+    "module": ".providers.base",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/bridge_client.py",
+    "module": ".safety",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/bridge_client.py",
+    "module": "stat",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/config.py",
+    "module": "os",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/config.py",
+    "module": "dataclasses",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/config.py",
+    "module": ".providers.base",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/provider_gateway.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/provider_gateway.py",
+    "module": "os",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/provider_gateway.py",
+    "module": "signal",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/provider_gateway.py",
+    "module": "subprocess",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/provider_gateway.py",
+    "module": "sys",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/provider_gateway.py",
+    "module": "time",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/provider_gateway.py",
+    "module": "pathlib",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/provider_gateway.py",
+    "module": ".providers.base",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/provider_worker.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/provider_worker.py",
+    "module": "sys",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/provider_worker.py",
+    "module": ".providers.openai",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/provider_worker.py",
+    "module": ".providers.anthropic",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/provider_worker.py",
+    "module": ".providers.base",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/routes.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/routes.py",
+    "module": "flask",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/routes.py",
+    "module": ".store",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/routes.py",
+    "module": ".service",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/routes.py",
+    "module": ".providers.base",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/routes.py",
+    "module": ".bridge_client",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/safety.py",
+    "module": "re",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/service.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/service.py",
+    "module": "time",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/service.py",
+    "module": "uuid",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/service.py",
+    "module": ".safety",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/service.py",
+    "module": ".store",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/service.py",
+    "module": ".providers.base",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/service.py",
+    "module": ".bridge_client",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/service.py",
+    "module": ".provider_gateway",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/service.py",
+    "module": ".bridge_client",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/service.py",
+    "module": ".config",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/store.py",
+    "module": "os",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/store.py",
+    "module": "sqlite3",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/store.py",
+    "module": "time",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/store.py",
+    "module": "uuid",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/store.py",
+    "module": "pathlib",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/store.py",
+    "module": "contextlib",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/providers/anthropic.py",
+    "module": "..safety",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/providers/anthropic.py",
+    "module": ".http",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/providers/anthropic.py",
+    "module": ".base",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/providers/base.py",
+    "module": "typing",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/providers/credentials.py",
+    "module": "os",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/providers/credentials.py",
+    "module": "stat",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/providers/credentials.py",
+    "module": ".base",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/providers/http.py",
+    "module": "requests",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/agent_chat/providers/http.py",
+    "module": ".base",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/providers/http.py",
+    "module": ".credentials",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/providers/openai.py",
+    "module": "..safety",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/providers/openai.py",
+    "module": ".http",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/agent_chat/providers/openai.py",
+    "module": ".base",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/app.py",
+    "module": "hmac",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/app.py",
+    "module": "flask",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/app.py",
+    "module": "..agent_chat.store",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/app.py",
+    "module": "werkzeug.exceptions",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/bridge.py",
+    "module": "..agent_chat.bridge_client",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/context.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/context.py",
+    "module": "..agent_chat.safety",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/context.py",
+    "module": ".decisions",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/controls.py",
+    "module": "hashlib",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/controls.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/controls.py",
+    "module": "time",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/controls.py",
+    "module": "uuid",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/controls.py",
+    "module": "..agent_chat.store",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/controls.py",
+    "module": "..agent_chat.safety",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/controls.py",
+    "module": ".types",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/decisions.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/decisions.py",
+    "module": "re",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/decisions.py",
+    "module": "dataclasses",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/decisions.py",
+    "module": ".types",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/mcp_server.py",
+    "module": "pathlib",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/mcp_server.py",
+    "module": "mcp.server.fastmcp",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/mcp_server.py",
+    "module": "mcp.types",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/protected.py",
+    "module": "re",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/recovery.py",
+    "module": ".worker",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/runtime.py",
+    "module": "concurrent.futures",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/runtime.py",
+    "module": "threading",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/runtime.py",
+    "module": "..agent_chat.store",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/runtime.py",
+    "module": ".controls",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/store.py",
+    "module": "hashlib",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/store.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/store.py",
+    "module": "time",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/store.py",
+    "module": "uuid",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/store.py",
+    "module": "..agent_chat.store",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/store.py",
+    "module": "..agent_chat.safety",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/store.py",
+    "module": ".types",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/transport_auth.py",
+    "module": "hmac",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/types.py",
+    "module": "enum",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/worker.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/worker.py",
+    "module": "os",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/worker.py",
+    "module": "pathlib",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/worker.py",
+    "module": "sqlite3",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/worker.py",
+    "module": "time",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/worker.py",
+    "module": "uuid",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/worker.py",
+    "module": ".context",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/worker.py",
+    "module": ".controls",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/worker.py",
+    "module": ".types",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/worker.py",
+    "module": ".protected",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/worker.py",
+    "module": "..agent_chat.store",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": "argparse",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": "os",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": "pathlib",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": "..agent_chat.config",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": "..agent_chat.providers.credentials",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": "..agent_chat.provider_gateway",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": "..agent_chat.store",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": ".app",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": "worker.adapter",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": ".context",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": ".runtime",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": ".store",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": ".worker",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": ".mcp_server",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": "uvicorn",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "backend/orchestrator/__main__.py",
+    "module": ".transport_auth",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "worker/adapter.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "worker/adapter.py",
+    "module": "re",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "worker/adapter.py",
+    "module": ".client",
+    "classification": "AGENTBRIDGE_CORE"
+  },
+  {
+    "file": "worker/client.py",
+    "module": "hashlib",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "worker/client.py",
+    "module": "http.client",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "worker/client.py",
+    "module": "json",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "worker/client.py",
+    "module": "os",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "worker/client.py",
+    "module": "pathlib",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "worker/client.py",
+    "module": "re",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "worker/client.py",
+    "module": "sqlite3",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "worker/client.py",
+    "module": "stat",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "worker/client.py",
+    "module": "urllib.parse",
+    "classification": "GENERIC_SHARED_UTILITY"
+  },
+  {
+    "file": "worker/protocol.py",
+    "module": "typing",
+    "classification": "GENERIC_SHARED_UTILITY"
+  }
+]

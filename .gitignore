@@ -37,3 +37,11 @@ build/
 .DS_Store
 .vscode/
 .idea/
+
+# Independent component build and test state
+node_modules/
+.angular/
+dist/
+.ci-*/
+.venv*/
+.recovery*/

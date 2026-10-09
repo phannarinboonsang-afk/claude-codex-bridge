@@ -1,0 +1,5 @@
+import {build} from 'esbuild';
+import {mkdir,writeFile} from 'node:fs/promises';
+const result=await build({entryPoints:['src/view.mjs'],bundle:true,write:false,format:'esm',target:'es2022'});
+await mkdir('dist',{recursive:true});
+await writeFile('dist/run-v1.html',`<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>AgentBridge</title><style>body{font:16px system-ui;max-width:900px;margin:20px auto;padding:16px}button,textarea{font:inherit;margin:6px;padding:8px}article{padding:12px;border:1px solid #aaa;border-radius:8px;margin:12px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere}.system{background:#eee}#error{color:#b00}</style></head><body><h1>AgentBridge</h1><div id="status">Waiting for run</div><div id="error" role="alert"></div><div id="controls"></div><section id="gate"></section><textarea id="input" aria-label="Owner instruction"></textarea><button id="send">Send instruction</button><main id="transcript"></main><script type="module">${result.outputFiles[0].text.replaceAll('</script','<\\/script')}</script></body></html>`);
