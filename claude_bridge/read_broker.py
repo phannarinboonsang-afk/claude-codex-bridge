@@ -197,6 +197,10 @@ class ReadBroker:
                    "--ro-bind", str(snapshot), "/project",
                    "--ro-bind", str(gd), "/project/.git",
                    "--ro-bind", str(empty), "/project/.git/config"]
+            # x86-64 uses /lib64 for the trusted ELF interpreter. ARM64
+            # commonly has no such directory; never expose any caller path.
+            if Path("/lib64").is_dir():
+                cmd += ["--ro-bind", "/lib64", "/lib64"]
             if (gd / "hooks").is_dir(): cmd += ["--tmpfs", "/project/.git/hooks"]
             if (gd / "info" / "attributes").is_file():
                 cmd += ["--ro-bind", str(empty), "/project/.git/info/attributes"]
